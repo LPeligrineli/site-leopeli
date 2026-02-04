@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { skillCategories, profile } from "@/data/content";
 import { MagicCard } from "@/components/ui/magic-card";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { useMobile } from "@/hooks/useMobile";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,6 +27,7 @@ const itemVariants = {
 
 export default function AboutPage() {
   const { locale, t } = useLanguage();
+  const isMobile = useMobile();
 
   const bioContent = {
     "pt-BR": [
@@ -141,23 +143,50 @@ export default function AboutPage() {
                 <motion.div
                   key={category.key}
                   variants={itemVariants}
-                  className=""
+                  className="relative rounded-xl transition-all duration-300 w-full "
                 >
-                  <MagicCard className="p-8 rounded-xl relative">
-                    <h3 className="text-xl font-semibold text-foreground mb-6">
-                      {t(`skills.${category.key}`)}
-                    </h3>
-                    <div className="flex flex-wrap gap-3">
-                      {category.skills.map((skill) => (
-                        <span
-                          key={skill.name}
-                          className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
-                        >
-                          {skill.name}
-                        </span>
-                      ))}
+                  {!isMobile ? (
+                    <MagicCard className="p-8 rounded-xl relative">
+                      <h3 className="text-xl font-semibold text-foreground mb-6">
+                        {t(`skills.${category.key}`)}
+                      </h3>
+                      <div className="flex flex-wrap gap-3">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill.name}
+                            className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
+                          >
+                            {skill.name}
+                          </span>
+                        ))}
+                      </div>
+                    </MagicCard>
+                  ) : (
+                    <div className="p-8 rounded-xl relative">
+                      <h3 className="text-xl font-semibold text-foreground mb-6">
+                        {t(`skills.${category.key}`)}
+                      </h3>
+                      <div className="flex flex-wrap gap-3">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill.name}
+                            className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
+                          >
+                            {skill.name}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </MagicCard>
+                  )}
+                  {isMobile && (
+                <BorderBeam
+                  duration={9}
+                  delay={3}
+                  size={200}
+                  borderWidth={2}
+                  className="from-transparent via-blue-500 to-transparent"
+                />
+              )}
                 </motion.div>
               ))}
             </motion.div>

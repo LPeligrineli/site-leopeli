@@ -160,9 +160,10 @@
   }
   html {
     scroll-behavior: smooth;
+    @apply overflow-x-hidden;
   }
   body {
-     @apply bg-background text-foreground antialiased;
+     @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -230,7 +231,7 @@
 
   /* Container with max width */
   .container-tight {
-    @apply md:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full box-border;
   }
 
   .container-full {
