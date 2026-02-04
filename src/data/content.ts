@@ -5,6 +5,7 @@ export const profile = {
   name: "Leonidas Peligrineli",
   role: "Senior Frontend Developer",
   email: "l.peligrineli@gmail.com",
+  avatar: "/images/leonidas.png",
   linkedin: {
     "pt-BR": "https://www.linkedin.com/in/leopeli/",
     "en-US": "https://www.linkedin.com/in/leopeli/?locale=en_US",

@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { skillCategories, profile } from "@/data/content";
 import { MagicCard } from "@/components/ui/magic-card";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -81,8 +82,19 @@ export default function AboutPage() {
                 variants={itemVariants}
                 className="flex justify-center md:justify-start"
               >
-                <div className="w-48 h-48 md:w-full md:h-auto md:aspect-square rounded-2xl bg-gradient-to-br from-primary/30 to-secondary flex items-center justify-center text-8xl font-bold text-primary/30">
-                  {profile.name.charAt(0)}
+                <div className="relative w-auto h-full md:w-full md:h-auto md:aspect-square rounded-2xl bg-gradient-to-br from-primary/30 to-secondary flex items-center justify-center text-8xl font-bold text-primary/30">
+                  <img
+                    src={profile.avatar}
+                    alt={profile.name}
+                    className="md:w-auto md:h-full md:aspect-square rounded-2xl object-cover"
+                  />
+                  <BorderBeam
+                    duration={9}
+                    delay={3}
+                    size={400}
+                    borderWidth={2}
+                    className="from-transparent via-blue-500 to-transparent"
+                  />
                 </div>
               </motion.div>
 
@@ -145,8 +157,7 @@ export default function AboutPage() {
                         </span>
                       ))}
                     </div>
-                    </MagicCard>
-              
+                  </MagicCard>
                 </motion.div>
               ))}
             </motion.div>

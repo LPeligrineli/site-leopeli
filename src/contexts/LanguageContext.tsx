@@ -54,6 +54,8 @@ const translations: Record<Locale, Record<string, string>> = {
     'projects.role': 'Papel',
     'projects.impact': 'Impacto',
     'projects.stack': 'Stack',
+    'projects.challenges': 'Desafios',
+    'projects.solutions': 'Soluções',
     
     // Testimonials
     'testimonials.title': 'Recomendações',
@@ -126,6 +128,8 @@ const translations: Record<Locale, Record<string, string>> = {
     'projects.role': 'Role',
     'projects.impact': 'Impact',
     'projects.stack': 'Stack',
+    'projects.challenges': 'Challenges',
+    'projects.solutions': 'Solutions',
     
     // Testimonials
     'testimonials.title': 'Recommendations',
