@@ -5,12 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MyIconCloud } from "../layout/MyIconCloud";
-
-const highlights = [
-  { key: "about.highlight1" },
-  { key: "about.highlight2" },
-  { key: "about.highlight3" },
-];
+import { useMobile } from "@/hooks/useMobile";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -31,6 +26,7 @@ const itemVariants = {
 
 export function About() {
   const { t } = useLanguage();
+  const isMobile = useMobile();
 
   return (
     <section className="section bg-card/30">
@@ -78,17 +74,14 @@ export function About() {
           </div>
 
           {/* Highlights */}
-          <motion.div
-            variants={containerVariants}
-            className="gap-4"
-          >
+          
             <motion.div
               variants={itemVariants}
-              className="text-center p-6 w-full"
+              className="text-center w-full"
             >
-              <MyIconCloud />
+              <MyIconCloud width={isMobile ? 300 : 400} height={isMobile ? 300 : 400} />
             </motion.div>
-          </motion.div>
+         
         </motion.div>
       </div>
     </section>

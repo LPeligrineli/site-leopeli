@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { profile } from "@/data/content";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
+import { useMobile } from "@/hooks/useMobile";
 
 const socialLinks = [
   { icon: Linkedin, href: profile.linkedin, label: "LinkedIn" },
@@ -33,6 +35,7 @@ const itemVariants = {
 
 export function Hero() {
   const { locale, t } = useLanguage();
+  const isMobile = useMobile();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden w-full">
@@ -139,9 +142,25 @@ export function Hero() {
           <ArrowDown className="w-5 h-5" />
         </motion.div>
       </motion.div>
-      <InteractiveGridPattern squares={[100,40]} width={80} height={80}
-        className={cn("inset-0 opacity-20 [mask-image:linear-gradient(to_bottom,white,transparent)]")}
-      />
+      {isMobile ? (
+        <AnimatedGridPattern
+          numSquares={40}
+          duration={3}
+          repeatDelay={1}
+          className={cn(
+            "inset-0 opacity-20 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+          )}
+        />
+      ) : (
+        <InteractiveGridPattern
+          squares={[100, 40]}
+          width={80}
+          height={80}
+          className={cn(
+            "inset-0 opacity-20 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+          )}
+        />
+      )}
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { IconCloud } from "@/components/ui/icon-cloud";
+import { IconCloud, IconCloudProps } from "@/components/ui/icon-cloud";
 
 const slugs = [
   "react",
@@ -30,14 +30,16 @@ const slugs = [
   "docker",
   "amazonaws",
 ];
-export const MyIconCloud = () => {
+
+
+export const MyIconCloud: React.FC<IconCloudProps> = ({ width, height }) => {
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
   );
 
   return (
-    <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden">
-      <IconCloud images={images} />
+    <div className="relative flex items-center justify-center overflow-hidden">
+      <IconCloud width={width} height={height} images={images} />
     </div>
   );
 };
