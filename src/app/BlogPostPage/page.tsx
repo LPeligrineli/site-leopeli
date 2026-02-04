@@ -1,5 +1,5 @@
-'use client';
-import { useSearchParams } from 'next/navigation';
+"use client";
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
@@ -8,12 +8,13 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { blogPosts } from '@/data/content';
+import { use } from 'react';
 
 export default function BlogPostPage() {
-  const params = useSearchParams();
+  const params = useParams();
   const { locale, t } = useLanguage();
   
-  const slug = params.get('slug') || '';
+  const slug = params?.slug as string | undefined;
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
