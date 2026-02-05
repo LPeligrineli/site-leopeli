@@ -7,8 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { blogPosts } from '@/data/content';
-import { use } from 'react';
+import { blogPosts } from '@/data/blog';
 
 export default function BlogPostPage() {
   const params = useParams();

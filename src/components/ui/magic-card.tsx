@@ -4,6 +4,7 @@ import React, { useCallback, useEffect } from "react"
 import { motion, useMotionTemplate, useMotionValue } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import { useMobile } from "@/hooks/useMobile"
 
 interface MagicCardProps {
   children?: React.ReactNode
@@ -24,6 +25,7 @@ export function MagicCard({
   gradientFrom = "var(--primary)",
   gradientTo = "var(--accent)",
 }: MagicCardProps) {
+  const isMobile = useMobile()
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
   const reset = useCallback(() => {
@@ -71,7 +73,7 @@ export function MagicCard({
   return (
     <div
       className={cn("group relative rounded-[inherit]", className)}
-      onPointerMove={handlePointerMove}
+      onPointerMove={isMobile ? undefined : handlePointerMove}
       onPointerLeave={reset}
       onPointerEnter={reset}
     >

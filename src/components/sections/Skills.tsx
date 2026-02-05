@@ -60,7 +60,7 @@ export function Skills() {
               variants={itemVariants}
               className=" rounded-xl transition-all duration-300 w-full relative "
             >
-              {!isMobile ? (
+             
                 <MagicCard
                   className="p-6 w-full h-full flex"
                   gradientFrom="var(--primary)"
@@ -80,23 +80,7 @@ export function Skills() {
                     ))}
                   </div>
                 </MagicCard>
-              ) : (
-                <div className="p-6 w-full h-full flex flex-col">
-                  <h3 className="text-lg font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
-                    {t(`skills.${category.key}`)}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill.name}
-                        className="px-3 py-1.5 text-sm rounded-full bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+             
               {isMobile && (
                 <BorderBeam
                   duration={9}

@@ -145,48 +145,31 @@ export default function AboutPage() {
                   variants={itemVariants}
                   className="relative rounded-xl transition-all duration-300 w-full "
                 >
-                  {!isMobile ? (
-                    <MagicCard className="p-8 rounded-xl relative">
-                      <h3 className="text-xl font-semibold text-foreground mb-6">
-                        {t(`skills.${category.key}`)}
-                      </h3>
-                      <div className="flex flex-wrap gap-3">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill.name}
-                            className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
-                          >
-                            {skill.name}
-                          </span>
-                        ))}
-                      </div>
-                    </MagicCard>
-                  ) : (
-                    <div className="p-8 rounded-xl relative">
-                      <h3 className="text-xl font-semibold text-foreground mb-6">
-                        {t(`skills.${category.key}`)}
-                      </h3>
-                      <div className="flex flex-wrap gap-3">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill.name}
-                            className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
-                          >
-                            {skill.name}
-                          </span>
-                        ))}
-                      </div>
+                  <MagicCard className="p-8 rounded-xl relative">
+                    <h3 className="text-xl font-semibold text-foreground mb-6">
+                      {t(`skills.${category.key}`)}
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {category.skills.map((skill) => (
+                        <span
+                          key={skill.name}
+                          className="px-4 py-2 rounded-lg bg-secondary/50 text-secondary-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
+                        >
+                          {skill.name}
+                        </span>
+                      ))}
                     </div>
-                  )}
+                  </MagicCard>
+
                   {isMobile && (
-                <BorderBeam
-                  duration={9}
-                  delay={3}
-                  size={200}
-                  borderWidth={2}
-                  className="from-transparent via-blue-500 to-transparent"
-                />
-              )}
+                    <BorderBeam
+                      duration={9}
+                      delay={3}
+                      size={200}
+                      borderWidth={2}
+                      className="from-transparent via-blue-500 to-transparent"
+                    />
+                  )}
                 </motion.div>
               ))}
             </motion.div>

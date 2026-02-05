@@ -20,7 +20,7 @@ export function Footer() {
             <span className="text-xl font-bold text-foreground">
               LP<span className="text-primary">.</span>
             </span>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground text-center md:text-left">
               © {currentYear} {profile.name}. {t("footer.rights")}
             </p>
           </div>

@@ -101,7 +101,7 @@ export function Header() {
               className="gap-2 text-muted-foreground"
             >
               <Globe className="w-4 h-4" />
-              {locale === "pt-BR" ? "EN" : "PT"}
+              {locale === "pt-BR" ? "PT" : "EN"}
             </Button>
             <Button variant="hero" size="sm" asChild>
               <a
@@ -115,19 +115,30 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-foreground md:hidden flex-shrink-0 ml-2"
-            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={isMobileMenuOpen}
-            type="button"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleLocale}
+              className="gap-2"
+            >
+              <Globe className="w-4 h-4" />
+              {locale === "pt-BR" ? "PT" : "EN"}
+            </Button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-foregroundflex-shrink-0 ml-2"
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isMobileMenuOpen}
+              type="button"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -161,15 +172,6 @@ export function Header() {
                 );
               })}
               <div className="flex items-center gap-3 pt-4 border-t border-border mt-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={toggleLocale}
-                  className="gap-2"
-                >
-                  <Globe className="w-4 h-4" />
-                  {locale === "pt-BR" ? "English" : "Português"}
-                </Button>
                 <Button variant="hero" size="sm" asChild className="flex-1">
                   <a
                     href={`https://wa.me/5511985545299?text=${encodeURIComponent(t("contact.watsapp"))}`}

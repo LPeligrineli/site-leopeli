@@ -1,9 +1,11 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { testimonials } from "@/data/content";
+import { testimonials } from "@/data/testimonials";
 import { MagicCard } from "../ui/magic-card";
+import { TestimonialDialog } from "../layout/Testimonial";
+import { useState } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,6 +26,9 @@ const itemVariants = {
 
 export function Testimonials() {
   const { locale, t } = useLanguage();
+  const [visibleTestimonial, setVisibleTestimonial] = useState(3);
+
+  const displayedTestimonials = testimonials.slice(0, visibleTestimonial);
 
   return (
     <section className="section">
@@ -45,45 +50,60 @@ export function Testimonials() {
 
         {/* Testimonials Grid */}
         <motion.div
+          key={`testimonials-${visibleTestimonial}`}
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate="visible"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {testimonials.map((testimonial, index) => (
-            <motion.article
-              key={testimonial.name}
-              variants={itemVariants}
-              className="relative rounded-xl transition-all duration-300"
-            >
-              <MagicCard className="p-6 h-full flex flex-col justify-start">
-                {/* Quote icon */}
-                <Quote className="w-8 h-8 text-primary/20 mb-4" />
+          <AnimatePresence mode="popLayout">
+            {displayedTestimonials.map((testimonial, index) => (
+              <motion.article
+                key={testimonial.name}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                className="relative rounded-xl transition-all duration-300"
+              >
+                <MagicCard className="p-6 h-full flex flex-col justify-start">
+                  {/* Quote icon */}
+                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
 
-                {/* Content */}
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  "{testimonial.content[locale]}"
-                </p>
+                  {/* Content */}
+                  <p className="text-muted-foreground leading-relaxed line-clamp-5 flex-grow">
+                    "{testimonial.content[locale]}"
+                  </p>
+                  <TestimonialDialog testimonial={testimonial} />
 
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/30 to-secondary flex items-center justify-center text-lg font-semibold text-primary">
-                    {testimonial.name.charAt(0)}
+                  {/* Author */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/30 to-secondary flex items-center justify-center text-lg font-semibold text-primary">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.role[locale]} · {testimonial.company}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      {testimonial.name}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.role[locale]} · {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </MagicCard>
-            </motion.article>
-          ))}
+                </MagicCard>
+              </motion.article>
+            ))}
+          </AnimatePresence>
         </motion.div>
+        {visibleTestimonial < testimonials.length && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setVisibleTestimonial(testimonials.length)}
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            >
+              {t("common.seeMore")}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

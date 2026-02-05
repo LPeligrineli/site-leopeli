@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { blogPosts } from "@/data/content";
+import { blogPosts } from "@/data/blog";
 import { MagicCard } from "../ui/magic-card";
 
 const containerVariants = {

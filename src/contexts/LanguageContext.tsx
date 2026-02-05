@@ -83,6 +83,10 @@ const translations: Record<Locale, Record<string, string>> = {
     'common.loading': 'Carregando...',
     'common.error': 'Erro ao carregar',
     'common.backHome': 'Voltar ao início',
+    'common.read_more': 'Leia mais',
+    'common.seeMore': 'Veja mais',
+    'common.viewOriginalVersion': 'versão original',
+    'common.viewPrintVersion': 'versão texto',
   },
   'en-US': {
     // Navigation
@@ -157,6 +161,10 @@ const translations: Record<Locale, Record<string, string>> = {
     'common.loading': 'Loading...',
     'common.error': 'Error loading',
     'common.backHome': 'Back to home',
+    'common.read_more': 'Read more',
+    'common.seeMore': 'See more',
+    'common.viewOriginalVersion': 'original version',
+    'common.viewPrintVersion': 'text version',
   },
 };
 

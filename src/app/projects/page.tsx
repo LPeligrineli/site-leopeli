@@ -5,7 +5,7 @@ import { ExternalLink } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { projects } from '@/data/content';
+import { projects } from '@/data/projects';
 import Image from 'next/image';
 import { MagicCard } from '@/components/ui/magic-card';
 

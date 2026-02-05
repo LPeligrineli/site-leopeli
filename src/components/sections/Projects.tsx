@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { projects } from "@/data/content";
+import { projects } from "@/data/projects";
 import { MagicCard } from "../ui/magic-card";
 import Image from "next/image";
 
