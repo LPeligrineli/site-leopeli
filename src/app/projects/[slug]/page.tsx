@@ -132,7 +132,7 @@ export default function ProjectDetailPage() {
                           <img
                             src={image.src}
                             alt={image.alt}
-                            className="rounded-lg object-cover w-full h-96"
+                            className="rounded-lg w-full h-auto"
                           />
                         </div>
                         <span className="text-sm text-muted-foreground mt-2 block text-left">

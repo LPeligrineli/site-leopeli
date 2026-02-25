@@ -182,7 +182,7 @@ export const projects: Project[] = [
       },
       images: [
         {
-          src: "/images/projects/auren/auren1.jpg",
+          src: "/images/projects/ineo/ineo-1.jpeg",
           alt: "Home Amp",
           label: {
             "pt-BR":
@@ -192,7 +192,7 @@ export const projects: Project[] = [
           },
         },
         {
-          src: "/images/projects/auren/auren2.jpg",
+          src: "/images/projects/ineo/ineo-2.jpeg",
           alt: "Home Amp",
           label: {
             "pt-BR":
@@ -202,7 +202,7 @@ export const projects: Project[] = [
           },
         },
         {
-          src: "/images/projects/auren/auren3.jpg",
+          src: "/images/projects/ineo/ineo-3.jpeg",
           alt: "Home Amp",
           label: {
             "pt-BR":
@@ -212,7 +212,57 @@ export const projects: Project[] = [
           },
         },
         {
-          src: "/images/projects/auren/auren4.jpg",
+          src: "/images/projects/ineo/ineo-4.jpeg",
+          alt: "Home Amp",
+          label: {
+            "pt-BR":
+              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+            "en-US":
+              "The home screen displays previews of key performance indicators for energy production assets.",
+          },
+        },
+        {
+          src: "/images/projects/ineo/ineo-5.jpeg",
+          alt: "Home Amp",
+          label: {
+            "pt-BR":
+              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+            "en-US":
+              "The home screen displays previews of key performance indicators for energy production assets.",
+          },
+        },
+        {
+          src: "/images/projects/ineo/ineo-6.jpeg",
+          alt: "Home Amp",
+          label: {
+            "pt-BR":
+              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+            "en-US":
+              "The home screen displays previews of key performance indicators for energy production assets.",
+          },
+        },
+        {
+          src: "/images/projects/ineo/ineo-7.jpeg",
+          alt: "Home Amp",
+          label: {
+            "pt-BR":
+              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+            "en-US":
+              "The home screen displays previews of key performance indicators for energy production assets.",
+          },
+        },
+        {
+          src: "/images/projects/ineo/ineo-8.jpeg",
+          alt: "Home Amp",
+          label: {
+            "pt-BR":
+              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+            "en-US":
+              "The home screen displays previews of key performance indicators for energy production assets.",
+          },
+        },
+        {
+          src: "/images/projects/ineo/ineo-9.jpeg",
           alt: "Home Amp",
           label: {
             "pt-BR":
@@ -253,20 +303,20 @@ export const projects: Project[] = [
     year: 2024,
     projectPage: {
       description: {
-        "pt-BR": "Descrição detalhada do projeto Auren em português.",
-        "en-US": "Detailed description of the Auren project in English.",
+        "pt-BR": "Familhão é uma plataforma digital de assinatura que oferece benefícios exclusivos aos usuários, como cupons de desconto, créditos em marketplace e participação em sorteios mensais de prêmios. A solução combina gamificação, e-commerce e sistema de recompensas em um ambiente 100% online, com foco em escala, alta disponibilidade e experiência do usuário.",
+        "en-US": "Familhão is a subscription-based digital platform that provides users with exclusive benefits, including discount coupons, marketplace credits, and participation in monthly prize draws. The solution combines gamification, e-commerce features, and a rewards system in a fully online environment designed for scale, performance, and user experience.",
       },
       challenges: {
-        "pt-BR": "Desafios enfrentados no projeto Auren em português.",
-        "en-US": "Challenges faced in the Auren project in English.",
+        "pt-BR": "Desde o início, o projeto exigiu decisões arquiteturais sólidas. Era necessário construir uma base robusta, escalável e altamente performática para sustentar múltiplos módulos e alto volume de interação. Paralelamente, o produto demandava uma experiência visual rica, com animações complexas e interativas para maximizar engajamento sem impactar negativamente métricas críticas como tempo de carregamento, renderização e responsividade.",
+        "en-US": "From the start, the project required solid architectural decisions. It was necessary to build a robust, scalable, and extremely performant foundation to support multiple modules and high interaction volume. Simultaneously, the product required a rich visual experience, with complex and interactive animations to maximize engagement without negatively impacting critical metrics such as load time, rendering, and responsiveness.",
       },
       solutions: {
-        "pt-BR": "Soluções implementadas no projeto Auren em português.",
-        "en-US": "Solutions implemented in the Auren project in English.",
+        "pt-BR": "Construímos o Familhão com foco total em performance usando React + Vite, TanStack Query e TanStack Router, com Tailwind CSS e Framer Motion para UI e animações. Criamos um design system próprio para padronização e velocidade de entrega. Para suportar múltiplos módulos com deploys independentes, adotamos uma arquitetura de Micro Frontends, garantindo escalabilidade e autonomia entre times. Em cada módulo, utilizamos arquitetura hexagonal para isolar domínio e integrações, facilitando troca de APIs, reuso de regras e preparando o terreno para uma futura versão React Native com reaproveitamento de parte da lógica.",
+        "en-US": "We built Familhão with a focus on performance using React + Vite, TanStack Query and TanStack Router, with Tailwind CSS and Framer Motion for UI and animations. We created a custom design system for standardization and delivery speed. To support multiple modules with independent deployments, we adopted a Micro Frontends architecture, ensuring scalability and autonomy between teams. In each module, we used hexagonal architecture to isolate domain and integrations, facilitating API swaps, rule reuse, and preparing the ground for a future React-Native version with reuse of part of the logic.",
       },
       impact: {
-        "pt-BR": "Resultados alcançados no projeto Auren em português.",
-        "en-US": "Results achieved in the Auren project in English.",
+        "pt-BR": "O Familhão se tornou um verdadeiro sucesso no mercado brasileiro, em dias de sorteios atingiamos cerca de 300 mil usuários online simultaneamente. A arquitetura adotada permitiu a entrega de módulos independentes e escaláveis, suportando múltiplos times e projetos com diferentes tecnologias e metodologias de desenvolvimento.",
+        "en-US": "Familhão became a true success in the Brazilian market, reaching over 300,000 users online simultaneously during prize draws. The adopted architecture allowed for the delivery of independent and scalable modules, supporting multiple teams and projects with different technologies and development methodologies.",
       },
       images: [
         {
