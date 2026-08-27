@@ -1,7 +1,8 @@
 'use client';
 import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
+import type { Locale } from '@/shared/i18n/locale';
 
-export type Locale = 'pt-BR' | 'en-US';
+export type { Locale } from '@/shared/i18n/locale';
 
 interface LanguageContextType {
   locale: Locale;
@@ -21,26 +22,26 @@ const translations: Record<Locale, Record<string, string>> = {
     // Hero
     'hero.greeting': 'Olá, eu sou',
     'hero.role': 'Senior Frontend Developer',
-    'hero.description': 'Construindo experiências digitais excepcionais com React, TypeScript e foco obsessivo em performance e UX.',
+    'hero.description': 'React e TypeScript no centro, mas o trabalho não para na tela. Mais de 8 anos participando de arquitetura, performance e decisão de produto em aplicações reais.',
     'hero.cta.cv': 'Baixar CV',
     'hero.cta.contact': 'Entrar em Contato',
     
     // About
     'about.title': 'Sobre Mim',
-    'about.subtitle': 'Transformando ideias em código elegante',
-    'about.intro': 'Com mais de 8 anos de experiência, construo arquiteturas frontend escaláveis e de alta performance que impulsionam produtos digitais modernos.',
+    'about.subtitle': 'Não só componentes: arquitetura, performance e produto.',
+    'about.intro': 'Mais de 8 anos construindo arquitetura front-end escalável e de alta performance para produtos digitais reais.',
     'about.highlight1.title': '+8 Anos',
     'about.highlight1.desc': 'de Experiência',
     'about.highlight2.title': '+50 Projetos',
     'about.highlight2.desc': 'Entregues',
     'about.highlight3.title': '99%',
     'about.highlight3.desc': 'Satisfação',
-    'about.bio': 'Sou desenvolvedor frontend com mais de 8 anos de experiência construindo aplicações web escaláveis, performáticas e bem estruturadas. Especialista em React e TypeScript, gosto de transformar problemas complexos em interfaces simples, intuitivas e agradáveis de usar. Minha abordagem une solidez técnica com olhar apurado para design e experiência do usuário, resultando em produtos que não apenas funcionam bem — mas que realmente fazem sentido para quem usa.',
+    'about.bio': 'Sou front-end sênior, focado em React e TypeScript, com mais de 8 anos de experiência. Já defini arquitetura, padronizei boilerplate e liderei tecnicamente times em produtos com alto volume de dado e usuário. Fora do código, é mentoria: ajudar dev júnior a virar sênior mais rápido do que eu virei.',
     'about.readMore': 'Saiba mais sobre mim',
     
     // Skills
     'skills.title': 'Habilidades',
-    'skills.subtitle': 'Tecnologias e ferramentas que domino',
+    'skills.subtitle': 'Onde entrego mais profundidade, e o ecossistema em volta',
     'skills.frontend': 'Frontend',
     'skills.uiux': 'UI/UX',
     'skills.testing': 'Testing',
@@ -71,7 +72,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Contact
     'contact.title': 'Vamos Conversar',
     'contact.subtitle': 'Interessado em trabalhar juntos?',
-    'contact.description': 'Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração.',
+    'contact.description': 'Se o assunto é React, arquitetura de front-end ou manter um produto rápido enquanto ele escala, eu quero saber.',
     'contact.cta': 'Enviar Mensagem',
     'contact.watsapp': 'Olá, vim pelo seu portfólio e gostaria de conversar sobre um projeto.',
     
@@ -99,26 +100,26 @@ const translations: Record<Locale, Record<string, string>> = {
     // Hero
     'hero.greeting': "Hi, I'm",
     'hero.role': 'Senior Frontend Developer',
-    'hero.description': 'Building exceptional digital experiences with React, TypeScript, and an obsessive focus on performance and UX.',
+    'hero.description': "React and TypeScript at the core, but the job doesn't stop at the screen. 8+ years making architecture, performance, and product calls on real applications.",
     'hero.cta.cv': 'Download CV',
     'hero.cta.contact': 'Get in Touch',
     
     // About
     'about.title': 'About Me',
-    'about.subtitle': 'Turning ideas into elegant code',
-    'about.intro': "With over 8 years of experience, I build scalable and high-performance frontend architectures that power modern digital products.",
+    'about.subtitle': 'Beyond components: architecture, performance, product.',
+    'about.intro': '8+ years building scalable, high-performance front-end architecture for real digital products.',
     'about.highlight1.title': '8+ Years',
     'about.highlight1.desc': 'of Experience',
     'about.highlight2.title': '50+ Projects',
     'about.highlight2.desc': 'Delivered',
     'about.highlight3.title': '99%',
     'about.highlight3.desc': 'Satisfaction',
-    'about.bio': 'I’m a frontend developer with over 8 years of experience building scalable, high-performance, and well-structured web applications. Specialized in React and TypeScript, I enjoy turning complex problems into simple, intuitive, and enjoyable user interfaces. My approach combines strong technical foundations with a keen eye for design and user experience, resulting in products that not only work flawlessly — but truly make sense for the people who use them.',
+    'about.bio': "Senior front-end developer focused on React and TypeScript, with 8+ years of experience. I've defined architecture, standardized boilerplate, and led frontend teams technically on products with heavy data and user load. Outside the code, it's mentoring: helping junior devs get to senior faster than I did.",
     'about.readMore': 'Learn more about me',
     
     // Skills
     'skills.title': 'Skills',
-    'skills.subtitle': 'Technologies and tools I master',
+    'skills.subtitle': 'Where I go deep, and the ecosystem around it',
     'skills.frontend': 'Frontend',
     'skills.uiux': 'UI/UX',
     'skills.testing': 'Testing',
@@ -149,7 +150,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Contact
     'contact.title': "Let's Talk",
     'contact.subtitle': 'Interested in working together?',
-    'contact.description': "I'm always open to discussing new projects, creative ideas, or collaboration opportunities.",
+    'contact.description': "If it's about React, front-end architecture, or keeping a growing product fast, I want to hear about it.",
     'contact.cta': 'Send Message',
     'contact.watsapp': "Hi, I came across your portfolio and would like to discuss a project.",
     

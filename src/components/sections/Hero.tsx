@@ -1,17 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Linkedin, Github, Twitter } from "lucide-react";
+import { ArrowDown, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { profile } from "@/data/content";
+import { useProfileViewModel } from "@/features/site/view-models/use-site-content-view-model";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
 import { useMobile } from "@/hooks/useMobile";
 
-const socialLinks = [
-  { icon: Linkedin, href: profile.linkedin, label: "LinkedIn" },
-];
+const socialLinks = [{ icon: Linkedin, label: "LinkedIn" }];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,7 +32,8 @@ const itemVariants = {
 };
 
 export function Hero() {
-  const { locale, t } = useLanguage();
+  const { t } = useLanguage();
+  const profile = useProfileViewModel();
   const isMobile = useMobile();
 
   return (
@@ -90,7 +89,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <Button variant="hero" size="lg" asChild>
-              <a href={profile.cv[locale]} download className="gap-2">
+              <a href={profile.cvUrl} download className="gap-2">
                 <Download className="w-5 h-5" />
                 {t("hero.cta.cv")}
               </a>
@@ -114,7 +113,7 @@ export function Hero() {
             {socialLinks.map((link) => (
               <a
                 key={link.label}
-                href={t(profile.linkedin[locale])}
+                href={profile.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-secondary/50 text-muted-foreground hover:text-primary hover:bg-secondary transition-all duration-200"

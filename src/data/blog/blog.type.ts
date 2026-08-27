@@ -1,10 +1,10 @@
-import type { Locale } from "@/contexts/LanguageContext";
+import type { LocalizedText } from "@/shared/i18n/locale";
 
-export interface BlogPost {
+export interface BlogPostRecord {
   slug: string;
-  title: Record<Locale, string>;
-  excerpt: Record<Locale, string>;
-  content: Record<Locale, string>;
+  title: LocalizedText;
+  excerpt: LocalizedText;
+  content: LocalizedText;
   date: string;
   readTime: number;
   tags: string[];

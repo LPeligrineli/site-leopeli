@@ -3,12 +3,16 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { Skills } from '@/components/sections/Skills';
-import { Projects } from '@/components/sections/Projects';
-import { Testimonials } from '@/components/sections/Testimonials';
-import { BlogPreview } from '@/components/sections/BlogPreview';
+import { projectsRepository } from '@/data/repositories/projects-repository';
+import { FeaturedProjectsContainer } from '@/features/projects/components/featured-projects-container';
+import { testimonialsRepository } from '@/data/repositories/testimonials-repository';
+import { TestimonialsContainer } from '@/features/testimonials/components/testimonials-container';
 import { Contact } from '@/components/sections/Contact';
 
-const Index = () => {
+const Index = async () => {
+  const featuredProjects = await projectsRepository.findFeatured();
+  const testimonials = await testimonialsRepository.findAll();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -16,9 +20,8 @@ const Index = () => {
         <Hero />
         <About />
         <Skills />
-        <Projects />
-        <Testimonials />
-        {/* <BlogPreview /> */}
+        <FeaturedProjectsContainer projects={featuredProjects} />
+        <TestimonialsContainer testimonials={testimonials} />
         <Contact />
       </main>
       <Footer />

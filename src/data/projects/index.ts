@@ -1,6 +1,6 @@
-import { Project } from "./project.type";
+import type { ProjectRecord } from "./project.type";
 
-export const projects: Project[] = [
+export const projectRecords: ProjectRecord[] = [
   {
     slug: "auren",
     title: {
@@ -9,10 +9,10 @@ export const projects: Project[] = [
     },
     description: {
       "pt-BR":
-        "Plataforma corporativa de análise de dados energéticos em tempo real, voltada a clientes de autoprodução de energia. O sistema consolidava dados operacionais vindos do data lake das usinas — como curtailment, disponibilidade e geração — em dashboards interativos, com visualizações de alta performance e integração com múltiplas fontes e APIs do mercado de energia.",
+        "Plataforma de análise de dados energéticos em tempo real para clientes de autoprodução de energia. Consolidava dados operacionais do data lake das usinas (curtailment, disponibilidade, geração) em dashboards de alta performance, integrados a múltiplas fontes e APIs do mercado de energia.",
 
       "en-US":
-        "Enterprise real-time energy data analytics platform designed for self-generation energy clients. The system consolidated operational data from power plant data lakes — such as curtailment, availability, and generation metrics — into interactive dashboards with high-performance visualizations and integration with multiple energy market data sources and APIs.",
+        "Real-time energy data analytics platform for self-generation energy clients. Consolidated operational data from power plant data lakes (curtailment, availability, generation) into high-performance dashboards, integrated with multiple energy market data sources and APIs.",
     },
     role: {
       "pt-BR": "Desenvolvedor Frontend Sênior",
@@ -38,38 +38,38 @@ export const projects: Project[] = [
     projectPage: {
       description: {
         "pt-BR":
-          " Autoproduçao Energia é um dos produtos mais complexos do mercado energético, que atendem sócios de parques de energia, só cliente corporativo de alta renda. Nesse cenario o amp, um dataviz com UI premium e funcional com informações estratégias, como Performance dos ativos e contratos.",
+          "Autoprodução de energia é um dos produtos mais complexos do mercado energético, atendendo sócios de parques de energia, só cliente corporativo de alta renda. Nesse cenário, o AMP é um dataviz com UI premium e funcional, com informações estratégicas como performance dos ativos e contratos.",
         "en-US":
-          "Energetic Autoproduction is one of the most complex products in the energy market, serving partners of energy parks and high-income corporate clients. In this scenario, AMP is a premium UI dataviz with functional strategic information such as asset performance and contracts.",
+          "Energy self-generation is one of the most complex products in the energy market, serving partners of energy parks, exclusively high-income corporate clients. In this scenario, AMP is a premium, functional data-viz UI surfacing strategic information such as asset performance and contracts.",
       },
       challenges: {
         "pt-BR":
-          "o projeto tinha como principal desafio a criação de um interface capaz de apresentar uma grande quantidade de dados complexos de forma clara e intuitiva, garantindo que os usuários pudessem facilmente acessar e interpretar as informações relevantes para a gestão de seus ativos energéticos e manter a performance da experiência do usuário em um nível elevado.",
+          "O principal desafio era apresentar um grande volume de dado complexo de forma clara e intuitiva, sem sacrificar performance. Os usuários precisavam acessar e interpretar rápido as informações que sustentam a gestão dos seus ativos energéticos.",
         "en-US":
-          "The main challenge of the project was to create an interface capable of presenting a large volume of complex data in a clear and intuitive way, ensuring that users could easily access and interpret the relevant information for managing their energy assets and maintaining a high level of user experience performance.",
+          "The main challenge was presenting a large volume of complex data clearly and intuitively, without sacrificing performance. Users needed to quickly access and interpret the information behind managing their energy assets.",
       },
       solutions: {
         "pt-BR":
-          "no frontend, adotamos uma stack composta por React + Vite, Tailwind CSS, Recharts e shadcn/ui e implementamos react-query para gerenciamento de cache das requisições, além de otimizações de performance como code-splitting, lazy loading e controles para evitar re-renderizações desnecessárias pois seria um processo extremamente custoso devido a quatidade de dados.Seguimos a arquitetura MVVM (Model-View-ViewModel) para garantir uma separação clara entre a lógica de negócios e a interface do usuário, facilitando a manutenção e escalabilidade do código.",
+          "Adotamos React + Vite, Tailwind CSS, Recharts e shadcn/ui, com React Query para cache das requisições. Como o volume de dado tornava re-renderização desnecessária um problema real de performance, investimos em code-splitting, lazy loading e controle fino de re-render. A arquitetura seguiu o padrão MVVM, separando lógica de negócio da interface, o que facilitou manutenção e escalabilidade à medida que o produto cresceu.",
         "en-US":
-          "In the frontend, we adopted a stack composed of React + Vite, Tailwind CSS, Recharts and shadcn/ui, and implemented react-query for cache management of requests, in addition to performance optimizations such as code-splitting, lazy loading and controls to avoid unnecessary re-renders because it would be an extremely costly process due to the large volume of data. We followed the MVVM (Model-View-ViewModel) architecture to ensure a clear separation between business logic and user interface, facilitating maintenance and scalability of the code.",
+          "We adopted React + Vite, Tailwind CSS, Recharts, and shadcn/ui, with React Query for request caching. Since data volume made unnecessary re-renders a real performance problem, we invested in code-splitting, lazy loading, and fine-grained re-render control. The architecture followed the MVVM pattern, separating business logic from the UI, which made the codebase easier to maintain and scale as the product grew.",
       },
       impact: {
         "pt-BR":
-          "o amp resultou em uma ferramenta poderosa e eficiente para os sócios de autoprodução de energia, permitindo-lhes monitorar e gerenciar seus ativos de forma eficaz. A interface intuitiva e as funcionalidades avançadas proporcionaram uma experiência de usuário excepcional, contribuindo para a satisfação dos clientes e o sucesso do produto no mercado energético. As decisões tecnicas adotadas permitiram uma entrega extremamente rápida e com alta performance inclusive com features que estariam previstas para a segunda fase de desenvolvimento.",
+          "O AMP se tornou a ferramenta que os sócios de autoprodução de energia passaram a usar no dia a dia para monitorar e gerenciar seus ativos, com um padrão de qualidade que fez a própria Auren adotar a arquitetura como referência para outros times. As decisões técnicas tomadas permitiram entregar rápido e com alta performance, incluindo funcionalidades originalmente previstas só para a segunda fase.",
         "en-US":
-          "The AMP resulted in a powerful and efficient tool for energy producers, enabling them to monitor and manage their assets effectively. The intuitive interface and advanced features provided an exceptional user experience, contributing to customer satisfaction and product success in the energy market. The technical decisions adopted allowed for an extremely fast delivery with high performance, even including features that were initially planned for the second phase of development.",
+          "AMP became the tool energy self-generation partners started using daily to monitor and manage their assets, with a quality bar that led Auren itself to adopt the architecture as a reference for other teams. The technical decisions made allowed for fast, high-performance delivery, including features originally scoped only for phase two.",
       },
       achievements: {
         "pt-BR": [
-          "A arquitetura implementada se mostrou tão eficiente que foi adotada por outros times dentro da Auren se tornando um padrão para novos projetos.",
-          "antecipamos features complexas como gerenciamento de documentos, pagina de noticias relevantes para o setor energético entre outras.",
-          " Acompanhamento de desenvolvedores juniores dentro do time, promovendo crescimento técnico e alinhamento com as melhores práticas de desenvolvimento.",
+          "A arquitetura se mostrou tão sólida que virou padrão para novos projetos dentro da Auren.",
+          "Antecipamos funcionalidades da segunda fase, como gerenciamento de documentos e uma página de notícias do setor energético.",
+          "Acompanhei devs juniores do time, com foco em crescimento técnico e boas práticas.",
         ],
         "en-US": [
-          "The implemented architecture proved so efficient that it was adopted by other teams within Auren, becoming a standard for new projects.",
-          "We anticipated complex features such as document management, a news page relevant to the energy sector, among others.",
-          "Mentorship of junior developers within the team, promoting technical growth and alignment with best development practices.",
+          "The architecture proved solid enough to become the standard for new projects within Auren.",
+          "We anticipated phase-two features like document management and a news page for the energy sector.",
+          "I mentored junior developers on the team, focused on technical growth and best practices.",
         ],
       },
       images: [
@@ -78,9 +78,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Visão geral do dashboard, com os principais indicadores de performance dos ativos de autoprodução de energia.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Dashboard overview, with the key performance indicators for self-generation energy assets.",
           },
         },
         {
@@ -88,9 +88,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Detalhamento por usina, com dado de curtailment, disponibilidade e geração.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Per-plant breakdown, with curtailment, availability, and generation data.",
           },
         },
         {
@@ -98,9 +98,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Consulta de contratos e informação estratégica dos ativos.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Contract lookup and strategic asset information.",
           },
         },
         {
@@ -108,9 +108,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Comparação de período para acompanhar a evolução da performance ao longo do tempo.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Period comparison to track performance evolution over time.",
           },
         },
       ],
@@ -152,32 +152,32 @@ export const projects: Project[] = [
       },
       challenges: {
         "pt-BR":
-          "Este foi um projeto com diversos desafios tecnicos devido a complexidade burocrática do setor de cartórios no Brasil por isso precisamos criar uma interface simples e intuitiva mas que atendesse as exigencias legais e operacionais dos cartórios, garantindo que os usuários pudessem acessar, interpretar e quitar seus débitos facilmente. e pelo lado dos cartórios trazer praticidade no cadastro de debitos, envio de intimações e gerenciamento dos processos de protesto.",
+          "Este foi um projeto com vários desafios técnicos por causa da complexidade burocrática do setor de cartórios no Brasil. Precisávamos de uma interface simples e intuitiva que também atendesse às exigências legais e operacionais, garantindo que os usuários pudessem acessar, interpretar e quitar seus débitos facilmente, e que trouxesse praticidade para os cartórios no cadastro de débitos, no envio de intimações e na gestão dos processos de protesto.",
         "en-US":
-          "This project presented several technical challenges due to the bureaucratic complexity of the protest office sector in Brazil. We needed to create a simple and intuitive interface that met the legal and operational requirements of the protest offices, ensuring that users could easily access, interpret, and settle their debts. On the protest offices' side, we aimed to provide practicality in debt registration, notification sending, and protest process management.",
+          "This project came with several technical challenges due to the bureaucratic complexity of Brazil's notary sector. We needed a simple, intuitive interface that still met the legal and operational requirements, letting users easily access, interpret, and settle their debts while giving notary offices practical tools for debt registration, notifications, and protest process management.",
       },
       solutions: {
         "pt-BR":
-          "Como tinhamos modulos diferentes com necessidades distintas, adotamos abordagens diferentes para cada um deles. no modulo de consulta pública, onde o foco era simplicidade e rapidez, optamos por um modelo SPA com React + Vite para que o usuário tenha um boa experiência sem onerar custo de infraestrutura. Já no modulo de gestão dos cartórios utilizamos Next.js para aproveitar o melhor dos dois mundos, server-side rendering e performance, e client-side rendering para interatividade. Implementamos também um fluxo de autenticação robusta com cognito da AWS para garantir a segurança dos dados sensíveis dos usuários e cartórios também uma interface de login através do serviço .gov . ",
+          "Como tínhamos módulos diferentes com necessidades distintas, adotamos abordagens diferentes para cada um. No módulo de consulta pública, onde o foco era simplicidade e rapidez, optamos por um modelo SPA com React + Vite, para uma boa experiência sem onerar o custo de infraestrutura. Já no módulo de gestão dos cartórios, usamos Next.js para aproveitar o melhor dos dois mundos: server-side rendering para performance e client-side rendering para interatividade. Implementamos também um fluxo de autenticação robusto com AWS Cognito, para garantir a segurança dos dados sensíveis dos usuários e cartórios, além de uma interface de login pelo serviço .gov.",
         "en-US":
-          "Given the different modules with distinct needs, we adopted different approaches for each. In the public consultation module, where simplicity and speed were key, we opted for an SPA model with React + Vite to provide a good user experience without incurring high infrastructure costs. For the management module for the protest offices, we used Next.js to leverage the best of both worlds: server-side rendering for performance and client-side rendering for interactivity. We also implemented a robust authentication flow using AWS Cognito to ensure the security of sensitive user and protest office data, along with a login interface through the .gov service (it's a governamental service).",
+          "Given the different modules with distinct needs, we took a different approach for each. In the public consultation module, where simplicity and speed were key, we went with an SPA model using React + Vite, for a good user experience without driving up infrastructure cost. For the notary offices' management module, we used Next.js to get the best of both worlds: server-side rendering for performance and client-side rendering for interactivity. We also implemented a robust authentication flow with AWS Cognito to secure sensitive user and notary office data, plus a login option through Brazil's official .gov identity service.",
       },
       impact: {
         "pt-BR":
-          "A solução trouxe uma transformação significativa para os cartórios de protestos que aderiram ao sistema, resultando em maior eficiência operacional, redução de erros e melhoria na experiência do usuário final. A plataforma permitiu que os cartórios gerenciassem seus processos de forma mais ágil e segura, ao mesmo tempo em que oferecia aos usuários uma maneira fácil e transparente de acessar informações e realizar pagamentos relacionados aos protestos.",
+          "A solução trouxe uma transformação real para os cartórios que aderiram ao sistema: mais eficiência operacional, menos erro, melhor experiência para o usuário final. A plataforma permitiu que os cartórios gerenciassem seus processos de forma mais ágil e segura, e deu aos devedores uma forma fácil e transparente de acessar informações e quitar débitos relacionados a protestos.",
         "en-US":
-          "The solution brought significant transformation to the protest offices that adopted the system, resulting in greater operational efficiency, error reduction, and improved end-user experience. The platform enabled protest offices to manage their processes more quickly and securely while providing users with an easy and transparent way to access information and make payments related to protests.",
+          "The solution brought real change to the notary offices that adopted the system: greater operational efficiency, fewer errors, a better end-user experience. The platform let notary offices manage their processes faster and more securely, and gave debtors an easy, transparent way to access information and settle protest-related debts.",
       },
       achievements: {
         "pt-BR": [
-          "Tive a oportunidade de exercer uma liderança tecnica no projeto, definindo a arquitetura e as melhores práticas de desenvolvimento para garantir a escalabilidade e manutenção futura da plataforma.",
-          "Tivemos um aumento de performance e redução de custos de infraestrutura graças a arquitetura adotada com Next.js e Vite para os modulos distintos.",
-          "Criamos um padrão de UX/UI que facilitou a navegação, usabilidade e acessibilidade para os usuários e cartórios. Tmabém agilizou o processo de desenvolvimento para futuras funcionalidades.",
+          "Exerci liderança técnica no projeto, definindo a arquitetura e as boas práticas de desenvolvimento para garantir escalabilidade e manutenção futura da plataforma.",
+          "Ganho de performance e redução de custo de infraestrutura graças à arquitetura híbrida adotada com Next.js e Vite para os módulos distintos.",
+          "Criamos um padrão de UX/UI que facilitou navegação, usabilidade e acessibilidade para usuários e cartórios, e agilizou o desenvolvimento de futuras funcionalidades.",
         ],
         "en-US": [
-          "I had the opportunity to take on a technical leadership role in the project, defining the architecture and best development practices to ensure the platform's scalability and future maintainability.",
-          "We achieved performance improvements and infrastructure cost reductions thanks to the architecture adopted with Next.js and Vite for the distinct modules.",
-          "We established a UX/UI standard that enhanced navigation, usability, and accessibility for both users and protest offices. This also streamlined the development process for future functionalities.",
+          "I took on a technical leadership role in the project, defining the architecture and development best practices to ensure the platform's scalability and future maintainability.",
+          "We achieved performance gains and infrastructure cost reductions thanks to the hybrid architecture adopted with Next.js and Vite across the distinct modules.",
+          "We established a UX/UI standard that improved navigation, usability, and accessibility for both users and notary offices, and streamlined development of future features.",
         ],
       },
       images: [
@@ -186,9 +186,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Painel administrativo do cartório, com visão consolidada dos débitos em aberto.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Notary office admin panel, with a consolidated view of outstanding debts.",
           },
         },
         {
@@ -196,9 +196,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Cadastro de débitos e emolumentos pelo cartório.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Debt and fee registration by the notary office.",
           },
         },
         {
@@ -206,9 +206,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Envio de intimações para os devedores.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Sending notifications to debtors.",
           },
         },
         {
@@ -216,9 +216,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Consulta pública de débitos pelo devedor.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Public debt lookup for debtors.",
           },
         },
         {
@@ -226,9 +226,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Detalhamento de um débito, com valores e prazo para regularização.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Debt detail view, with amounts and the deadline to settle.",
           },
         },
         {
@@ -236,9 +236,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Fluxo de pagamento e regularização online.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Online payment and settlement flow.",
           },
         },
         {
@@ -246,9 +246,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Login via serviço .gov para o módulo do devedor.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Login via the .gov service for the debtor module.",
           },
         },
         {
@@ -256,9 +256,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Gestão de processos de protesto pelo cartório.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Protest process management by the notary office.",
           },
         },
         {
@@ -266,9 +266,9 @@ export const projects: Project[] = [
           alt: "Home Amp",
           label: {
             "pt-BR":
-              "A home é composta por uma previa dos principais indicadores de performance dos ativos de autoprodução de energia.",
+              "Confirmação de regularização, com histórico de débitos quitados.",
             "en-US":
-              "The home screen displays previews of key performance indicators for energy production assets.",
+              "Settlement confirmation, with a history of paid debts.",
           },
         },
       ],
@@ -358,20 +358,20 @@ export const projects: Project[] = [
     year: 2023,
     projectPage: {
       description: {
-        "pt-BR": "Descrição detalhada do projeto Auren em português.",
-        "en-US": "Detailed description of the Auren project in English.",
+        "pt-BR": "Refatoração da loja de veículos semi-novos da Localiza na Vtex, com foco em busca, filtros e gestão de estoque em alto volume. Fez parte de um conjunto de entregas para grandes marcas (Localiza Seminovos, Drogaria Araujo, Woba, Reserva) construídas sobre a plataforma Vtex CMS e IO.",
+        "en-US": "A refactor of Localiza's semi-new vehicle storefront on Vtex, focused on search, filtering, and high-volume inventory management. It was part of a set of deliveries for major brands (Localiza Seminovos, Drogaria Araujo, Woba, Reserva) built on the Vtex CMS and IO platform.",
       },
       challenges: {
-        "pt-BR": "Desafios enfrentados no projeto Auren em português.",
-        "en-US": "Challenges faced in the Auren project in English.",
+        "pt-BR": "O maior desafio era performance em catálogo grande: milhares de veículos com filtro cruzado (modelo, ano, preço, cidade), dentro das limitações e convenções da própria Vtex, sem abrir mão de tempo de carregamento rápido para quem estava decidindo uma compra de alto valor.",
+        "en-US": "The main challenge was performance on a large catalog: thousands of vehicles with cross-filtering (model, year, price, city), within Vtex's own constraints and conventions, without sacrificing load time for someone deciding on a high-value purchase.",
       },
       solutions: {
-        "pt-BR": "Soluções implementadas no projeto Auren em português.",
-        "en-US": "Solutions implemented in the Auren project in English.",
+        "pt-BR": "Usamos React e GraphQL sobre a Vtex IO, com Styled Components para os componentes de UI, priorizando otimização de busca e renderização do catálogo. O trabalho fez parte de uma frente maior na Framework Digital, entregando interface de alta performance para múltiplas marcas na mesma plataforma.",
+        "en-US": "We used React and GraphQL on top of Vtex IO, with Styled Components for the UI layer, prioritizing search and catalog rendering performance. This was part of a broader effort at Framework Digital, delivering high-performance interfaces for multiple brands on the same platform.",
       },
       impact: {
-        "pt-BR": "Resultados alcançados no projeto Auren em português.",
-        "en-US": "Results achieved in the Auren project in English.",
+        "pt-BR": "O refactor melhorou a performance e a experiência de quem comprava, e também a experiência de quem desenvolvia em cima da plataforma, com componentes mais simples de manter e reaproveitar entre projetos.",
+        "en-US": "The refactor improved performance and the buying experience, and the developer experience too, with components that were simpler to maintain and reuse across projects.",
       },
       images: [
         {

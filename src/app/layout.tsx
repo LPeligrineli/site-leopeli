@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leonidas Peligrineli - Senior Frontend Developer",
-  description: "Pagina de portfolio e blog de Leonidas Peligrineli",
+  title: "Leonidas Peligrineli - Senior Frontend Developer, React & TypeScript",
+  description: "Senior Frontend Developer specialized in React, TypeScript, and front-end architecture -- real case studies with measurable results, from Auren to Familhao.",
   openGraph: {
-    title: "Leonidas Peligrineli - Senior Frontend Developer",
-    description: "Pagina de portfolio e blog de Leonidas Peligrineli",
+    title: "Leonidas Peligrineli - Senior Frontend Developer, React & TypeScript",
+    description: "Senior Frontend Developer specialized in React, TypeScript, and front-end architecture -- real case studies with measurable results, from Auren to Familhao.",
     url: "https://leopeli.dev",
     siteName: "Leonidas Peligrineli",
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: "/images/imagem-og.png",
         width: 1200,
         height: 630,
-        alt: "Leonidas Peligrineli - Senior Frontend Developer",
+        alt: "Leonidas Peligrineli - Senior Frontend Developer, React & TypeScript",
       },
     ],
     locale: "pt_BR",

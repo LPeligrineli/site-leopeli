@@ -1,15 +1,13 @@
 "use client";
 import { Linkedin, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { profile } from "@/data/content";
+import { useProfileViewModel } from "@/features/site/view-models/use-site-content-view-model";
 
-const socialLinks = [
-  { icon: Linkedin, href: profile.linkedin, label: "LinkedIn" },
-];
+const socialLinks = [{ icon: Linkedin, label: "LinkedIn" }];
 
 export function Footer() {
-  const { t, locale} = useLanguage();
-  const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+  const profile = useProfileViewModel();
 
   return (
     <footer className="border-t border-border bg-card/50">
@@ -21,7 +19,7 @@ export function Footer() {
               LP<span className="text-primary">.</span>
             </span>
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {currentYear} {profile.name}. {t("footer.rights")}
+              © {profile.currentYear} {profile.name}. {t("footer.rights")}
             </p>
           </div>
 
@@ -36,7 +34,7 @@ export function Footer() {
             {socialLinks.map((link) => (
               <a
                 key={link.label}
-                href={profile.linkedin[locale]}
+                href={profile.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-primary transition-colors"

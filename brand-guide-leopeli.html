@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark" data-palette="dracula">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;LeoPeli/&gt; — Guia de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --radius: 14px;
+    --success: #3ddc84;
+    --error: #ff5c5c;
+  }
+
+  /* ===== NEBULA (blue/cyan) ===== */
+  html[data-palette="nebula"][data-theme="dark"]{
+    --bg:#141A24; --surface:#1B2331; --surface-alt:#212B3D; --border:#2A3547;
+    --text:#F4F7FB; --text-muted:#8B96AC;
+    --accent:#00F0FF; --accent-2:#7B6EFF; --accent-contrast:#0B0F16;
+  }
+  html[data-palette="nebula"][data-theme="light"]{
+    --bg:#F6F8FB; --surface:#FFFFFF; --surface-alt:#EEF2F7; --border:#DCE3ED;
+    --text:#141A24; --text-muted:#5B6576;
+    --accent:#007E8A; --accent-2:#5B4BDB; --accent-contrast:#FFFFFF;
+  }
+
+  /* ===== AURORA (pink/lilac) ===== */
+  html[data-palette="aurora"][data-theme="dark"]{
+    --bg:#191420; --surface:#221B2C; --surface-alt:#2A2136; --border:#382C46;
+    --text:#F7F3FB; --text-muted:#9C8FB0;
+    --accent:#FF4FD8; --accent-2:#B18CFF; --accent-contrast:#191420;
+  }
+  html[data-palette="aurora"][data-theme="light"]{
+    --bg:#FAF7FC; --surface:#FFFFFF; --surface-alt:#F1EAF7; --border:#E3D6EF;
+    --text:#191420; --text-muted:#6B5E7E;
+    --accent:#D6199F; --accent-2:#7A5AE0; --accent-contrast:#FFFFFF;
+  }
+
+  /* ===== CIRCUIT (green) ===== */
+  html[data-palette="circuit"][data-theme="dark"]{
+    --bg:#0F1912; --surface:#16221A; --surface-alt:#1C2B21; --border:#26392C;
+    --text:#F2F7F3; --text-muted:#8CA492;
+    --accent:#39FF88; --accent-2:#00D9B5; --accent-contrast:#0B140D;
+  }
+  html[data-palette="circuit"][data-theme="light"]{
+    --bg:#F5FAF6; --surface:#FFFFFF; --surface-alt:#EAF3EC; --border:#D6E5D9;
+    --text:#14241A; --text-muted:#55705D;
+    --accent:#0B7C4D; --accent-2:#009688; --accent-contrast:#FFFFFF;
+  }
+
+  /* ===== DRACULA (pink/purple, official Dracula/Alucard palette) ===== */
+  html[data-palette="dracula"][data-theme="dark"]{
+    --bg:#282A36; --surface:#343746; --surface-alt:#424450; --border:#44475A;
+    --text:#F8F8F2; --text-muted:#6272A4;
+    --accent:#FF79C6; --accent-2:#BD93F9; --accent-contrast:#282A36;
+  }
+  html[data-palette="dracula"][data-theme="light"]{
+    --bg:#FFFBEB; --surface:#ECE9DF; --surface-alt:#DEDCCF; --border:#CFCFDE;
+    --text:#1F1F1F; --text-muted:#6C664B;
+    --accent:#A3144D; --accent-2:#644AC9; --accent-contrast:#FFFFFF;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter', sans-serif;
+    transition:background .25s ease, color .25s ease;
+    padding-bottom:80px;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk', sans-serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .navbar{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1080px; margin:0 auto;}
+  .controls{display:flex; align-items:center; gap:10px;}
+  .palette-switch{display:flex; gap:6px; background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:4px;}
+  .palette-dot{
+    width:30px; height:30px; border-radius:50%; border:2px solid transparent; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:0;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .palette-dot:hover{transform:scale(1.08);}
+  .palette-dot.active{border-color:var(--text);}
+  .palette-dot[data-p="nebula"]{background:linear-gradient(135deg,#00F0FF,#7B6EFF);}
+  .palette-dot[data-p="aurora"]{background:linear-gradient(135deg,#FF4FD8,#B18CFF);}
+  .palette-dot[data-p="circuit"]{background:linear-gradient(135deg,#39FF88,#00D9B5);}
+  .palette-dot[data-p="dracula"]{background:linear-gradient(135deg,#FF79C6,#BD93F9);}
+
+  .theme-toggle{
+    display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--border);
+    border-radius:999px; padding:6px 14px; cursor:pointer; font-size:13px; font-family:'JetBrains Mono',monospace; color:var(--text-muted);
+  }
+  .theme-toggle:hover{color:var(--text); border-color:var(--accent);}
+
+  /* SECTIONS */
+  section{padding:64px 0; border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--accent); font-size:12px; margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--accent);}
+  h2{font-size:30px; font-weight:600; margin-bottom:8px; letter-spacing:-.01em;}
+  .lead{color:var(--text-muted); max-width:620px; font-size:15px; line-height:1.6; margin-bottom:40px;}
+
+  /* HERO */
+  .hero{padding:100px 0 70px; text-align:center;}
+  .hero .eyebrow{justify-content:center;}
+  .hero .eyebrow::before{display:none;}
+  .hero h1{font-size:44px; font-weight:700; letter-spacing:-.02em; margin-bottom:14px;}
+  .hero p{color:var(--text-muted); max-width:520px; margin:0 auto; font-size:16px; line-height:1.6;}
+  .accent-text{color:var(--accent);}
+
+  /* PILLARS */
+  .pillars{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .pillar{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+  .pillar .num{font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:12px; margin-bottom:14px;}
+  .pillar h3{font-size:17px; font-weight:600; margin-bottom:8px;}
+  .pillar p{font-size:13px; color:var(--text-muted); line-height:1.55;}
+
+  /* LOGO */
+  .logo-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:16px; margin-bottom:16px;}
+  .logo-box{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:50px 20px; gap:18px; min-height:220px;
+  }
+  .logo-box .cap{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.1em;}
+  .lockup{display:flex; align-items:center; gap:14px;}
+  .lockup .name{text-align:left;}
+  .lockup .name .full{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; line-height:1.1;}
+  .lockup .name .role{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.08em; margin-top:4px;}
+  .wordmark-solo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px;}
+  .wordmark-solo .dot{display:inline-block; width:8px; height:8px; background:var(--accent); margin-left:4px; vertical-align:middle; border-radius:1px;}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .context-box{border-radius:var(--radius); padding:36px 20px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border);}
+  .context-box.on-dark{background:#141A24;}
+  .context-box.on-light{background:#FFFFFF;}
+
+  .rules{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:16px;}
+  .rule-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px; font-size:12.5px; color:var(--text-muted); line-height:1.5;}
+  .rule-card b{color:var(--text); display:block; margin-bottom:6px; font-size:13px;}
+  .rule-card.dont{border-color:color-mix(in srgb, var(--error) 40%, var(--border));}
+  .rule-card.dont b{color:var(--error);}
+
+  /* COLOR */
+  .chosen-badge{
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; vertical-align:middle;
+    background:var(--accent); color:var(--accent-contrast); padding:3px 9px; border-radius:999px; margin-left:6px;
+  }
+  .theme-row{margin-bottom:28px;}
+  .theme-row .label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px;}
+  .swatches{display:grid; grid-template-columns:repeat(6,1fr); gap:10px;}
+  .swatch{border-radius:10px; overflow:hidden; border:1px solid var(--border); cursor:pointer; position:relative;}
+  .swatch .fill{height:64px;}
+  .swatch .meta{background:var(--surface); padding:8px 10px;}
+  .swatch .meta .role{font-size:10.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em;}
+  .swatch .meta .hex{font-family:'JetBrains Mono',monospace; font-size:12px; margin-top:2px;}
+  .swatch .copied{position:absolute; top:6px; right:6px; font-family:'JetBrains Mono',monospace; font-size:9px; background:rgba(0,0,0,.6); color:#fff; padding:2px 5px; border-radius:4px; opacity:0; transition:opacity .2s;}
+  .swatch.copied-flash .copied{opacity:1;}
+
+  /* TYPE */
+  .type-block{margin-bottom:26px; padding-bottom:26px; border-bottom:1px solid var(--border);}
+  .type-block:last-child{border-bottom:none;}
+  .type-tag{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent); margin-bottom:8px; text-transform:uppercase; letter-spacing:.08em;}
+  .type-sample-display{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:40px; letter-spacing:-.01em;}
+  .type-sample-body{font-family:'Inter',sans-serif; font-size:16px; color:var(--text-muted); max-width:560px; line-height:1.6; margin-top:6px;}
+  .type-sample-mono{font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--text-muted);}
+  .scale div{font-family:'Space Grotesk',sans-serif; font-weight:600; margin-bottom:6px;}
+
+  /* APPLICATION PREVIEW */
+  .preview{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:60px 40px; text-align:center;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px;
+    border:1px solid var(--border); border-radius:999px; padding:6px 14px; color:var(--text-muted); margin-bottom:22px;
+  }
+  .badge .dot-live{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);}
+  .preview h2.name{font-size:38px; margin-bottom:6px;}
+  .preview .role{color:var(--accent); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin-bottom:14px;}
+  .preview .desc{color:var(--text-muted); max-width:480px; margin:0 auto 26px; font-size:14.5px; line-height:1.6;}
+  .btn-row{display:flex; gap:12px; justify-content:center; margin-bottom:30px; flex-wrap:wrap;}
+  .btn{font-family:'Inter',sans-serif; font-weight:600; font-size:14px; padding:12px 22px; border-radius:10px; cursor:pointer; border:1px solid transparent;}
+  .btn-primary{background:var(--accent); color:var(--accent-contrast);}
+  .btn-secondary{background:transparent; border-color:var(--border); color:var(--text);}
+  .tags{display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+  .tag{font-family:'JetBrains Mono',monospace; font-size:11.5px; background:var(--surface-alt); border:1px solid var(--border); padding:6px 12px; border-radius:8px; color:var(--text-muted);}
+
+  footer{padding:40px 0 0; text-align:center;}
+  footer p{font-size:12.5px; color:var(--text-muted); font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width: 820px){
+    .pillars{grid-template-columns:1fr 1fr;}
+    .logo-grid, .duo, .rules{grid-template-columns:1fr;}
+    .swatches{grid-template-columns:repeat(3,1fr);}
+    .hero h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <svg width="90" height="26" viewBox="0 0 90 26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+      <text x="0" y="19"><tspan font-family="JetBrains Mono" font-weight="600" font-size="19" fill="var(--accent)">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="18" fill="var(--text)">LP</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="19" fill="var(--accent)">/&gt;</tspan></text>
+    </svg>
+    <div class="controls">
+      <div class="palette-switch" id="paletteSwitch">
+        <div class="palette-dot" data-p="nebula" title="Nebula"></div>
+        <div class="palette-dot" data-p="aurora" title="Aurora"></div>
+        <div class="palette-dot" data-p="circuit" title="Circuit"></div>
+        <div class="palette-dot active" data-p="dracula" title="Dracula"></div>
+      </div>
+      <div class="theme-toggle" id="themeToggle">☾ <span id="themeLabel">dark</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Guia de marca — v2 · paleta Dracula escolhida</div>
+    <svg width="240" height="60" viewBox="0 0 240 60" style="margin-bottom:18px; overflow:visible;">
+      <text x="0" y="42"><tspan font-family="JetBrains Mono" font-weight="600" font-size="30" fill="var(--accent)">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="30" fill="var(--text)">LeoPeli</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="30" fill="var(--accent)">/&gt;</tspan></text>
+    </svg>
+    <p>Leonidas Peligrineli — rebranding do portfólio: identidade clean, elegante, tecnológica e profissional. Logo tratado como um componente de código, tipografia pensada para dev, paleta Dracula.</p>
+  </section>
+
+  <section id="pillars">
+    <div class="eyebrow">Princípios</div>
+    <h2>Quatro pilares da marca</h2>
+    <p class="lead">Toda decisão visual — cor, tipo, espaçamento — responde a um destes princípios.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="num">01</div><h3>Clean</h3><p>Muito respiro, poucos elementos, hierarquia clara. Nada compete por atenção.</p></div>
+      <div class="pillar"><div class="num">02</div><h3>Elegante</h3><p>Contraste sóbrio, acentos usados com moderação — nunca satura a tela.</p></div>
+      <div class="pillar"><div class="num">03</div><h3>Tecnológico</h3><p>Referências de código (sintaxe JSX/HTML, fonte monoespaçada) sem virar caricatura de "matrix".</p></div>
+      <div class="pillar"><div class="num">04</div><h3>Profissional</h3><p>Legibilidade e contraste em primeiro lugar — a marca precisa funcionar em qualquer contexto.</p></div>
+    </div>
+  </section>
+
+  <section id="logo">
+    <div class="eyebrow">Identidade</div>
+    <h2>Sistema de logo</h2>
+    <p class="lead">100% tipográfico, baseado em sintaxe de código (JSX/HTML) — reforça a identidade de dev frontend sem virar ilustração. Nome em Space Grotesk Bold; os caracteres de sintaxe (<span class="mono accent-text">&lt; / &gt;</span>) sempre em JetBrains Mono, na cor de destaque.</p>
+
+    <div class="logo-grid">
+      <div class="logo-box">
+        <span class="cap">Logotipo principal — como um componente</span>
+        <svg width="240" height="56" viewBox="0 0 240 56" style="overflow:visible;">
+          <text x="0" y="38"><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="28" fill="var(--text)">LeoPeli</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">/&gt;</tspan></text>
+        </svg>
+      </div>
+      <div class="logo-box">
+        <span class="cap">Variante compacta — nav, footer, espaços justos</span>
+        <svg width="100" height="56" viewBox="0 0 100 56" style="overflow:visible;">
+          <text x="0" y="38"><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="28" fill="var(--text)">LP</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">/&gt;</tspan></text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-box">
+        <span class="cap">Favicon / ícone de app — uso exclusivo</span>
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="1" y="1" width="50" height="50" rx="12" fill="var(--accent)"/>
+          <text x="26" y="33" font-family="Space Grotesk" font-weight="700" font-size="20" text-anchor="middle" fill="var(--accent-contrast)">LP</text>
+        </svg>
+      </div>
+      <div class="logo-box">
+        <span class="cap">Regra: nunca isolado como logo principal</span>
+        <div style="display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--text-muted); text-align:left; max-width:220px;">
+          O monograma <b style="color:var(--text)">LP</b> sozinho é reservado só pra favicon e avatar — no site, sempre usa o logotipo com <span class="mono accent-text">&lt;&gt;</span>.
+        </div>
+      </div>
+    </div>
+
+    <div class="duo">
+      <div class="context-box on-dark">
+        <svg width="220" height="52" viewBox="0 0 220 52" style="overflow:visible;">
+          <text x="0" y="34"><tspan font-family="JetBrains Mono" font-weight="600" font-size="26" fill="#FF79C6">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="26" fill="#F8F8F2">LeoPeli</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="26" fill="#FF79C6">/&gt;</tspan></text>
+        </svg>
+      </div>
+      <div class="context-box on-light">
+        <svg width="220" height="52" viewBox="0 0 220 52" style="overflow:visible;">
+          <text x="0" y="34"><tspan font-family="JetBrains Mono" font-weight="600" font-size="26" fill="#A3144D">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="26" fill="#1F1F1F">LeoPeli</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="26" fill="#A3144D">/&gt;</tspan></text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="rules">
+      <div class="rule-card"><b>Área de proteção</b>Espaço livre equivalente à altura do "L". Nunca separe os caracteres de sintaxe (<span class="mono">&lt; /&gt;</span>) do nome — eles formam uma unidade só.</div>
+      <div class="rule-card"><b>Tamanho mínimo</b>Logotipo completo a partir de 20px de altura. Abaixo disso, use a variante compacta <span class="mono">&lt;LP/&gt;</span>; abaixo de 24px totais, só o favicon.</div>
+      <div class="rule-card dont"><b>Não fazer</b>Não tire a barra de self-closing (<span class="mono">&lt;LeoPeli&gt;</span> sem <span class="mono">/</span> perde o sentido), não troque os símbolos por outra fonte que não seja mono, não colora o nome — só a sintaxe usa a cor de destaque.</div>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="eyebrow">Paleta</div>
+    <h2 id="paletteName">Dracula — pink/purple <span class="chosen-badge">✓ escolhida</span></h2>
+    <p class="lead" id="paletteDesc">Baseada na paleta oficial Dracula (dark) e sua irmã oficial Alucard (light). Clique num swatch pra copiar o hex.</p>
+
+    <div class="theme-row">
+      <div class="label">Modo dark</div>
+      <div class="swatches" id="swatchesDark"></div>
+    </div>
+    <div class="theme-row">
+      <div class="label">Modo light</div>
+      <div class="swatches" id="swatchesLight"></div>
+    </div>
+  </section>
+
+  <section id="type">
+    <div class="eyebrow">Tipografia</div>
+    <h2>Três fontes, três funções</h2>
+    <p class="lead">Space Grotesk para títulos (geométrica, técnica), Inter para texto corrido (legibilidade), JetBrains Mono para tags, labels e detalhes — reforça o universo dev sem exagero.</p>
+
+    <div class="type-block">
+      <div class="type-tag">Display — Space Grotesk 700</div>
+      <div class="type-sample-display">Building exceptional digital experiences</div>
+    </div>
+    <div class="type-block">
+      <div class="type-tag">Corpo — Inter 400/500</div>
+      <div class="type-sample-body">Frontend developer com mais de 8 anos de experiência construindo interfaces escaláveis, performáticas e bem estruturadas — combinando fundamentos técnicos sólidos com um olhar apurado para design.</div>
+    </div>
+    <div class="type-block">
+      <div class="type-tag">Mono — JetBrains Mono 500</div>
+      <div class="type-sample-mono">const role = "Senior Frontend Developer"; // React · TypeScript · Next.js</div>
+    </div>
+    <div class="type-block scale">
+      <div style="font-size:34px;">Aa — Heading 1 / 34px</div>
+      <div style="font-size:24px;">Aa — Heading 2 / 24px</div>
+      <div style="font-size:18px;">Aa — Heading 3 / 18px</div>
+      <div style="font-size:15px; font-weight:400; font-family:'Inter',sans-serif; color:var(--text-muted);">Aa — Body / 15px</div>
+      <div style="font-size:12px; font-weight:500; font-family:'JetBrains Mono',monospace; color:var(--text-muted);">AA — CAPTION / 12px</div>
+    </div>
+  </section>
+
+  <section id="application">
+    <div class="eyebrow">Aplicação</div>
+    <h2>Como fica no portfólio</h2>
+    <p class="lead">Prévia do topo do novo site com a paleta e o logo atuais. Troque tema e paleta no topo da página pra ver as combinações.</p>
+
+    <div class="preview">
+      <svg width="200" height="46" viewBox="0 0 240 56" style="margin-bottom:22px; overflow:visible;">
+        <text x="0" y="38"><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">&lt;</tspan><tspan font-family="Space Grotesk" font-weight="700" font-size="28" fill="var(--text)">LeoPeli</tspan><tspan font-family="JetBrains Mono" font-weight="600" font-size="28" fill="var(--accent)">/&gt;</tspan></text>
+      </svg>
+      <div class="badge"><span class="dot-live"></span> Disponível para novos projetos</div>
+      <h2 class="name">Leonidas Peligrineli</h2>
+      <div class="role">Senior Frontend Developer</div>
+      <p class="desc">Construindo experiências digitais de alta performance com React, TypeScript e um foco quase obsessivo em UX.</p>
+      <div class="btn-row">
+        <div class="btn btn-primary">Get in Touch</div>
+        <div class="btn btn-secondary">Download CV</div>
+      </div>
+      <div class="tags">
+        <div class="tag">React</div>
+        <div class="tag">TypeScript</div>
+        <div class="tag">Next.js</div>
+        <div class="tag">Tailwind CSS</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&lt;LP/&gt; — Guia de marca · paleta Dracula · gerado para leopeli.dev.br</p>
+</footer>
+
+<script>
+  const PALETTES = {
+    nebula: {
+      label: "Nebula — azul/cyan",
+      desc: "A base que você já gosta: cyan elétrico sobre grafite azulado profundo. Transmite precisão técnica sem parecer frio.",
+      dark: [
+        ["Background","#141A24"], ["Surface","#1B2331"], ["Texto","#F4F7FB"],
+        ["Accent","#00F0FF"], ["Accent 2","#7B6EFF"], ["Border","#2A3547"]
+      ],
+      light: [
+        ["Background","#F6F8FB"], ["Surface","#FFFFFF"], ["Texto","#141A24"],
+        ["Accent","#007E8A"], ["Accent 2","#5B4BDB"], ["Border","#DCE3ED"]
+      ]
+    },
+    aurora: {
+      label: "Aurora — rosa/lilás",
+      desc: "Alternativa mais expressiva: rosa vívido e lilás sobre roxo quase preto. Mesma sobriedade, personalidade diferente.",
+      dark: [
+        ["Background","#191420"], ["Surface","#221B2C"], ["Texto","#F7F3FB"],
+        ["Accent","#FF4FD8"], ["Accent 2","#B18CFF"], ["Border","#382C46"]
+      ],
+      light: [
+        ["Background","#FAF7FC"], ["Surface","#FFFFFF"], ["Texto","#191420"],
+        ["Accent","#D6199F"], ["Accent 2","#7A5AE0"], ["Border","#E3D6EF"]
+      ]
+    },
+    circuit: {
+      label: "Circuit — verde",
+      desc: "Alternativa mais 'hacker/lab': verde neon e teal sobre verde-carvão. Boa opção se quiser fugir do azul convencional de devs.",
+      dark: [
+        ["Background","#0F1912"], ["Surface","#16221A"], ["Texto","#F2F7F3"],
+        ["Accent","#39FF88"], ["Accent 2","#00D9B5"], ["Border","#26392C"]
+      ],
+      light: [
+        ["Background","#F5FAF6"], ["Surface","#FFFFFF"], ["Texto","#14241A"],
+        ["Accent","#0B7C4D"], ["Accent 2","#009688"], ["Border","#D6E5D9"]
+      ]
+    },
+    dracula: {
+      label: "Dracula — pink/purple",
+      desc: "Baseada na paleta oficial Dracula (dark) e sua irmã oficial Alucard (light) — a referência mais icônica do universo dev. Pink + roxo sobre grafite arroxeado.",
+      dark: [
+        ["Background","#282A36"], ["Surface","#343746"], ["Texto","#F8F8F2"],
+        ["Accent","#FF79C6"], ["Accent 2","#BD93F9"], ["Border","#44475A"]
+      ],
+      light: [
+        ["Background","#FFFBEB"], ["Surface","#ECE9DF"], ["Texto","#1F1F1F"],
+        ["Accent","#A3144D"], ["Accent 2","#644AC9"], ["Border","#CFCFDE"]
+      ]
+    }
+  };
+
+  function renderSwatches(containerId, list){
+    const el = document.getElementById(containerId);
+    el.innerHTML = list.map(([role,hex]) => `
+      <div class="swatch" data-hex="${hex}">
+        <div class="copied">copiado!</div>
+        <div class="fill" style="background:${hex};"></div>
+        <div class="meta"><div class="role">${role}</div><div class="hex">${hex}</div></div>
+      </div>
+    `).join('');
+    el.querySelectorAll('.swatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        const hex = sw.getAttribute('data-hex');
+        navigator.clipboard && navigator.clipboard.writeText(hex).catch(()=>{});
+        sw.classList.add('copied-flash');
+        setTimeout(()=> sw.classList.remove('copied-flash'), 900);
+      });
+    });
+  }
+
+  function applyPalette(p){
+    document.documentElement.setAttribute('data-palette', p);
+    const badge = p === 'dracula' ? ' <span class="chosen-badge">✓ escolhida</span>' : '';
+    document.getElementById('paletteName').innerHTML = PALETTES[p].label + badge;
+    document.getElementById('paletteDesc').textContent = PALETTES[p].desc;
+    renderSwatches('swatchesDark', PALETTES[p].dark);
+    renderSwatches('swatchesLight', PALETTES[p].light);
+    document.querySelectorAll('.palette-dot').forEach(d => d.classList.toggle('active', d.dataset.p === p));
+  }
+
+  document.getElementById('paletteSwitch').addEventListener('click', (e) => {
+    const dot = e.target.closest('.palette-dot');
+    if(!dot) return;
+    applyPalette(dot.dataset.p);
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    document.getElementById('themeLabel').textContent = next;
+    document.getElementById('themeToggle').firstChild.textContent = next === 'dark' ? '☾ ' : '☀ ';
+  });
+
+  applyPalette('dracula');
+</script>
+
+</body>
+</html>

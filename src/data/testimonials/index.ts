@@ -1,6 +1,6 @@
-import { Testimonial } from "./testimonial.type";
+import type { TestimonialRecord } from "./testimonial.type";
 
-export const testimonials: Testimonial[] = [
+export const testimonialRecords: TestimonialRecord[] = [
   {
     name: "Lucas Barros Scianni Morais",
     role: {

@@ -1,6 +1,6 @@
-import { BlogPost } from "./blog.type";
+import type { BlogPostRecord } from "./blog.type";
 
-export const blogPosts: BlogPost[] = [
+export const blogPostRecords: BlogPostRecord[] = [
   {
     slug: "react-server-components-guide",
     title: {

@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { Home, Hammer, Wrench, HardHat } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";

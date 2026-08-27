@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { profile } from '@/data/content';
+import { useProfileViewModel } from '@/features/site/view-models/use-site-content-view-model';
 
 export function Contact() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
+  const profile = useProfileViewModel();
 
   return (
     <section id="contact" className="section">
@@ -39,7 +40,7 @@ export function Contact() {
             </Button>
             <Button variant="hero-outline" size="lg" asChild className="w-full sm:w-auto">
               <a
-                href={profile.linkedin[locale]}
+                href={profile.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gap-2"

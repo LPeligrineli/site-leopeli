@@ -1,11 +1,11 @@
-import type { Locale } from "@/contexts/LanguageContext";
+import type { LocalizedText } from "@/shared/i18n/locale";
 
-export interface Project {
+export interface ProjectRecord {
   slug: string;
-  title: Record<Locale, string>;
-  description: Record<Locale, string>;
-  role: Record<Locale, string>;
-  impact: Record<Locale, string>;
+  title: LocalizedText;
+  description: LocalizedText;
+  role: LocalizedText;
+  impact: LocalizedText;
   stack: string[];
   image: string;
   featured: boolean;
@@ -13,15 +13,15 @@ export interface Project {
   githubUrl?: string;
   year: number;
   projectPage: {
-    description: Record<Locale, string>;
-    challenges: Record<Locale, string>;
-    solutions: Record<Locale, string>;
-    impact: Record<Locale, string>;
-    achievements?: Record<Locale, string[]>;
+    description: LocalizedText;
+    challenges: LocalizedText;
+    solutions: LocalizedText;
+    impact: LocalizedText;
+    achievements?: Record<keyof LocalizedText, string[]>;
     images: {
       src: string;
       alt: string;
-      label: Record<Locale, string>;
+      label: LocalizedText;
     }[];
   };
 }

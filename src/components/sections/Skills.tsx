@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { skillCategories } from "@/data/content";
+import { useSkillsViewModel } from "@/features/site/view-models/use-site-content-view-model";
 import { MagicCard } from "../ui/magic-card";
 import { useMobile } from "@/hooks/useMobile";
 import { BorderBeam } from "../ui/border-beam";
@@ -25,9 +25,8 @@ const itemVariants = {
 
 export function Skills() {
   const { t } = useLanguage();
+  const { categories } = useSkillsViewModel();
   const isMobile = useMobile();
-
-  console.log("isMobile:", isMobile);
 
   return (
     <section className="section">
@@ -54,7 +53,7 @@ export function Skills() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {skillCategories.map((category) => (
+          {categories.map((category) => (
             <motion.div
               key={category.key}
               variants={itemVariants}
@@ -67,7 +66,7 @@ export function Skills() {
                   gradientTo="var(--accent)"
                 >
                   <h3 className="text-lg font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
-                    {t(`skills.${category.key}`)}
+                  {category.title}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill) => (

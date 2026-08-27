@@ -1,11 +1,11 @@
-import type { Locale } from "@/contexts/LanguageContext";
+import type { LocalizedText } from "@/shared/i18n/locale";
 
-export interface Testimonial {
+export interface TestimonialRecord {
   name: string;
-  role: Record<Locale, string>;
+  role: LocalizedText;
   company: string;
   image: string;
   print?: string;
-  content: Record<Locale, string>;
+  content: LocalizedText;
   linkedinUrl?: string;
 }
