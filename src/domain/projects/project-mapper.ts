@@ -1,31 +1,48 @@
-import type { ProjectRecord } from "@/data/projects/project.type";
-import type { Project } from "./project";
+import type {
+  ProjectCaseBlockRecord,
+  ProjectRecord,
+} from "@/data/projects/project.type";
+import type { LocalizedList } from "@/shared/i18n/locale";
+import type { Project, ProjectCaseBlock } from "./project";
+
+function copyList(list: LocalizedList): LocalizedList {
+  return {
+    "pt-BR": [...list["pt-BR"]],
+    "en-US": [...list["en-US"]],
+  };
+}
+
+function copyBlock(block: ProjectCaseBlockRecord): ProjectCaseBlock {
+  return {
+    title: { ...block.title },
+    body: { ...block.body },
+  };
+}
 
 export function mapProjectRecordToProject(record: ProjectRecord): Project {
+  const { caseStudy } = record;
+
   return {
     slug: record.slug,
     title: { ...record.title },
+    company: { ...record.company },
+    period: { ...record.period },
     description: { ...record.description },
     role: { ...record.role },
-    impact: { ...record.impact },
+    highlight: { ...record.highlight },
     stack: [...record.stack],
     image: record.image,
     featured: record.featured,
     liveUrl: record.liveUrl,
     githubUrl: record.githubUrl,
-    year: record.year,
     details: {
-      description: { ...record.projectPage.description },
-      challenges: { ...record.projectPage.challenges },
-      solutions: { ...record.projectPage.solutions },
-      impact: { ...record.projectPage.impact },
-      achievements: record.projectPage.achievements
-        ? {
-            "pt-BR": [...record.projectPage.achievements["pt-BR"]],
-            "en-US": [...record.projectPage.achievements["en-US"]],
-          }
-        : undefined,
-      images: record.projectPage.images.map((image) => ({
+      context: { ...caseStudy.context },
+      challenge: { ...caseStudy.challenge },
+      myRole: copyList(caseStudy.myRole),
+      architecture: caseStudy.architecture.map(copyBlock),
+      decisions: caseStudy.decisions.map(copyBlock),
+      results: copyList(caseStudy.results),
+      images: caseStudy.images.map((image) => ({
         ...image,
         label: { ...image.label },
       })),

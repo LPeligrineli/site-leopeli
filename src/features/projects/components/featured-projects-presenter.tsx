@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagicCard } from "@/components/ui/magic-card";
 import type { ProjectsViewModel } from "../types/projects-view-model";
@@ -66,6 +66,9 @@ export function FeaturedProjectsPresenter({
                 </div>
 
                 <div className="flex-1 p-6 flex flex-col justify-between">
+                  <p className="text-xs text-muted-foreground mb-2">
+                    {project.company} · {project.period}
+                  </p>
                   <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
@@ -82,9 +85,9 @@ export function FeaturedProjectsPresenter({
                     </div>
                     <div>
                       <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                        {copy.impact}
+                        {copy.highlight}
                       </span>
-                      <p className="text-sm text-primary">{project.impact}</p>
+                      <p className="text-sm text-primary">{project.highlight}</p>
                     </div>
                   </div>
 
@@ -106,10 +109,11 @@ export function FeaturedProjectsPresenter({
 
                   <Link
                     href={project.href}
+                    aria-label={`${copy.viewProject}: ${project.title}`}
                     className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
                   >
                     {copy.viewProject}
-                    <ExternalLink className="w-3 h-3" />
+                    <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
               </MagicCard>

@@ -1,13 +1,14 @@
 export interface ProjectListItem {
   slug: string;
   title: string;
+  company: string;
+  period: string;
   description: string;
   role: string;
-  impact: string;
+  highlight: string;
   stack: string[];
   hiddenStackCount: number;
   image: string;
-  year: number;
   href: string;
 }
 
@@ -17,7 +18,7 @@ export interface ProjectsCopy {
   viewAll: string;
   viewProject: string;
   role: string;
-  impact: string;
+  highlight: string;
 }
 
 export interface ProjectsViewModel {
@@ -26,27 +27,57 @@ export interface ProjectsViewModel {
   isEmpty: boolean;
 }
 
+export interface ProjectCaseBlockView {
+  title: string;
+  body: string;
+}
+
+export interface ProjectDetailsCopy extends ProjectsCopy {
+  stack: string;
+  period: string;
+  context: string;
+  challenge: string;
+  myRole: string;
+  architecture: string;
+  decisions: string;
+  results: string;
+  screenshots: string;
+  onThisPage: string;
+  visitProduct: string;
+  backHome: string;
+  notFound: string;
+}
+
+export type ProjectCaseSectionId =
+  | "context"
+  | "challenge"
+  | "my-role"
+  | "architecture"
+  | "decisions"
+  | "results";
+
 export interface ProjectDetailsViewModel {
   project: {
     slug: string;
     title: string;
+    company: string;
+    period: string;
     description: string;
     role: string;
-    impact: string;
-    challenges: string;
-    solutions: string;
+    highlight: string;
     stack: string[];
-    year: number;
     liveUrl?: string;
     githubUrl?: string;
+    context: string;
+    challenge: string;
+    myRole: string[];
+    architecture: ProjectCaseBlockView[];
+    decisions: ProjectCaseBlockView[];
+    results: string[];
     images: Array<{ src: string; alt: string; label: string }>;
+    /** Sections that have content, in reading order, for the in-page index. */
+    sections: Array<{ id: ProjectCaseSectionId; label: string }>;
   } | null;
-  copy: ProjectsCopy & {
-    stack: string;
-    challenges: string;
-    solutions: string;
-    backHome: string;
-    notFound: string;
-  };
+  copy: ProjectDetailsCopy;
   isEmpty: boolean;
 }

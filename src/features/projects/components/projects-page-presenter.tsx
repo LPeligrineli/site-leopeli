@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MagicCard } from "@/components/ui/magic-card";
@@ -64,11 +64,9 @@ export function ProjectsPagePresenter({ projects, copy }: ProjectsViewModel) {
                     </div>
 
                     <div className="flex-1 p-6 flex flex-col">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-muted-foreground">
-                          {project.year}
-                        </span>
-                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        {project.company} · {project.period}
+                      </p>
                       <h2 className="text-2xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                         {project.title}
                       </h2>
@@ -84,9 +82,9 @@ export function ProjectsPagePresenter({ projects, copy }: ProjectsViewModel) {
                         </div>
                         <div>
                           <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                            {copy.impact}
+                            {copy.highlight}
                           </span>
-                          <p className="text-sm text-primary">{project.impact}</p>
+                          <p className="text-sm text-primary">{project.highlight}</p>
                         </div>
                       </div>
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -101,10 +99,11 @@ export function ProjectsPagePresenter({ projects, copy }: ProjectsViewModel) {
                       </div>
                       <Link
                         href={project.href}
+                        aria-label={`${copy.viewProject}: ${project.title}`}
                         className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
                       >
                         {copy.viewProject}
-                        <ExternalLink className="w-3 h-3" />
+                        <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
                   </MagicCard>

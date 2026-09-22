@@ -42,4 +42,31 @@ describe("projects view models", () => {
       project?.details.images[0].label["pt-BR"],
     );
   });
+
+  it("localizes case study blocks and lists only sections with content", async () => {
+    const project = await projectsRepository.findBySlug("Localiza-SemiNovos");
+    const viewModel = createProjectDetailsViewModel(
+      project,
+      "en-US",
+      translate,
+    );
+
+    expect(viewModel.project?.architecture[0].title).toBe(
+      project?.details.architecture[0].title["en-US"],
+    );
+    expect(viewModel.project?.decisions).toEqual([]);
+    expect(viewModel.project?.sections.map((section) => section.id)).toEqual([
+      "context",
+      "challenge",
+      "my-role",
+      "architecture",
+      "results",
+    ]);
+  });
+
+  it("returns an empty details state for a missing project", () => {
+    const viewModel = createProjectDetailsViewModel(null, "pt-BR", translate);
+    expect(viewModel).toMatchObject({ project: null, isEmpty: true });
+    expect(viewModel.copy.notFound).toBe("projects.notFound");
+  });
 });

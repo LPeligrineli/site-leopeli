@@ -8,9 +8,10 @@ describe("mapProjectRecordToProject", () => {
     const project = mapProjectRecordToProject(record);
 
     expect(project.slug).toBe(record.slug);
-    expect(project.details.challenges).toEqual(record.projectPage.challenges);
-    expect(project.details.images).toEqual(record.projectPage.images);
-    expect(project).not.toHaveProperty("projectPage");
+    expect(project.details.challenge).toEqual(record.caseStudy.challenge);
+    expect(project.details.decisions).toEqual(record.caseStudy.decisions);
+    expect(project.details.images).toEqual(record.caseStudy.images);
+    expect(project).not.toHaveProperty("caseStudy");
   });
 
   it("does not expose mutable record arrays", () => {
@@ -18,6 +19,9 @@ describe("mapProjectRecordToProject", () => {
     const project = mapProjectRecordToProject(record);
 
     expect(project.stack).not.toBe(record.stack);
-    expect(project.details.images).not.toBe(record.projectPage.images);
+    expect(project.details.images).not.toBe(record.caseStudy.images);
+    expect(project.details.myRole["pt-BR"]).not.toBe(
+      record.caseStudy.myRole["pt-BR"],
+    );
   });
 });
