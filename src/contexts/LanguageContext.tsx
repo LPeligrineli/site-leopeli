@@ -73,10 +73,11 @@ const translations: Record<Locale, Record<string, string>> = {
     
     // Blog
     'blog.title': 'Blog',
-    'blog.subtitle': 'Artigos e insights sobre desenvolvimento',
+    'blog.subtitle': 'Tecnologia, trabalho e o resto da vida',
     'blog.readMore': 'Ler artigo',
     'blog.viewAll': 'Ver todos os artigos',
     'blog.minRead': 'min de leitura',
+    'blog.notFound': 'Post não encontrado',
     
     // Contact
     'contact.title': 'Vamos Conversar',
@@ -160,10 +161,11 @@ const translations: Record<Locale, Record<string, string>> = {
     
     // Blog
     'blog.title': 'Blog',
-    'blog.subtitle': 'Articles and insights about development',
+    'blog.subtitle': 'Tech, work and the rest of life',
     'blog.readMore': 'Read article',
     'blog.viewAll': 'View all articles',
     'blog.minRead': 'min read',
+    'blog.notFound': 'Post not found',
     
     // Contact
     'contact.title': "Let's Talk",

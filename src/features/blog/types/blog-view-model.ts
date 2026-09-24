@@ -1,7 +1,10 @@
+import type { BlogContentBlock } from "../lib/blog-content";
+
 export interface BlogListItem {
   slug: string;
   title: string;
   titleInitial: string;
+  image?: string;
   excerpt: string;
   readTimeLabel: string;
   tags: string[];
@@ -29,7 +32,7 @@ export interface BlogPostDetailsViewModel {
     title: string;
     titleInitial: string;
     excerpt: string;
-    content: string;
+    content: BlogContentBlock[];
     publishedAtLabel: string;
     readTimeLabel: string;
     tags: string[];

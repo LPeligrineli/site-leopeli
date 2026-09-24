@@ -6,7 +6,104 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
+import type { BlogContentBlock, BlogInline } from "../lib/blog-content";
 import type { BlogPostDetailsViewModel } from "../types/blog-view-model";
+
+function InlineContent({ content }: { content: BlogInline[] }) {
+  return (
+    <>
+      {content.map((token, index) => {
+        switch (token.type) {
+          case "strong":
+            return (
+              <strong key={index} className="font-semibold text-foreground">
+                {token.value}
+              </strong>
+            );
+          case "em":
+            return <em key={index}>{token.value}</em>;
+          case "code":
+            return (
+              <code
+                key={index}
+                className="rounded bg-secondary/60 px-1.5 py-0.5 font-mono text-[0.9em] text-foreground"
+              >
+                {token.value}
+              </code>
+            );
+          case "link": {
+            const isExternal = /^https?:\/\//.test(token.href);
+            return (
+              <a
+                key={index}
+                href={token.href}
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+                {...(isExternal
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {token.value}
+              </a>
+            );
+          }
+          default:
+            return <span key={index}>{token.value}</span>;
+        }
+      })}
+    </>
+  );
+}
+
+function ContentBlock({ block }: { block: BlogContentBlock }) {
+  switch (block.type) {
+    case "heading":
+      return block.level === 2 ? (
+        <h2
+          id={block.id}
+          className="scroll-mt-28 pt-6 text-2xl md:text-3xl font-semibold text-foreground"
+        >
+          {block.text}
+        </h2>
+      ) : (
+        <h3
+          id={block.id}
+          className="scroll-mt-28 pt-4 text-xl font-semibold text-foreground"
+        >
+          {block.text}
+        </h3>
+      );
+    case "quote":
+      return (
+        <blockquote className="border-l-2 border-primary pl-5 italic text-foreground/90">
+          <InlineContent content={block.content} />
+        </blockquote>
+      );
+    case "image":
+      return (
+        <figure className="mx-auto max-w-md py-4">
+          {/* Post images keep their native aspect ratio. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={block.src}
+            alt={block.alt}
+            loading="lazy"
+            className="w-full h-auto rounded-xl border border-border/50"
+          />
+          {block.caption && (
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    default:
+      return (
+        <p>
+          <InlineContent content={block.content} />
+        </p>
+      );
+  }
+}
 
 export function BlogPostDetailsPresenter({
   post,
@@ -31,12 +128,12 @@ export function BlogPostDetailsPresenter({
     <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-20">
-        <section className="section hero-gradient">
+        <section className="section pb-10 md:pb-12 lg:pb-12 hero-gradient">
           <div className="container-tight">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="max-w-3xl"
+              className="max-w-2xl mx-auto"
             >
               <Link
                 href="/blog"
@@ -58,7 +155,10 @@ export function BlogPostDetailsPresenter({
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 {post.title}
               </h1>
-              <div className="flex items-center gap-6 text-muted-foreground">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                {post.excerpt}
+              </p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   {post.publishedAtLabel}
@@ -72,35 +172,13 @@ export function BlogPostDetailsPresenter({
           </div>
         </section>
 
-        <section className="section">
+        <section className="pt-10 pb-20 md:pb-28">
           <div className="container-tight">
-            <div className="max-w-3xl mx-auto">
-              <div className="aspect-[2/1] rounded-xl bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center mb-12">
-                <span className="text-9xl font-bold text-primary/20">
-                  {post.titleInitial}
-                </span>
-              </div>
-              <article className="prose prose-invert prose-lg max-w-none">
-                <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                  {post.excerpt}
-                </p>
-                <div className="text-muted-foreground leading-relaxed space-y-6">
-                  <p>{post.content}</p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris.
-                  </p>
-                  <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum.
-                  </p>
-                </div>
-              </article>
-            </div>
+            <article className="max-w-2xl mx-auto space-y-6 text-lg leading-relaxed text-foreground/80">
+              {post.content.map((block, index) => (
+                <ContentBlock key={index} block={block} />
+              ))}
+            </article>
           </div>
         </section>
       </main>

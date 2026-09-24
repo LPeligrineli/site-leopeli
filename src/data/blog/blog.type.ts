@@ -8,6 +8,7 @@ export interface BlogPostRecord {
   date: string;
   readTime: number;
   tags: string[];
-  image: string;
+  /** Used on cards and as the social preview image. */
+  image?: string;
   featured: boolean;
 }

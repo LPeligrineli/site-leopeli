@@ -20,6 +20,19 @@ describe("blog view models", () => {
     expect(viewModel.isActive).toBe(false);
   });
 
+  it("parses post content into blocks and keeps the calendar day", async () => {
+    const post = await blogRepository.findBySlug(
+      "ser-ruim-em-alguma-coisa-de-novo",
+    );
+    const viewModel = createBlogPostDetailsViewModel(post, "pt-BR", translate);
+
+    expect(viewModel.post?.content[0].type).toBe("paragraph");
+    expect(
+      viewModel.post?.content.some((block) => block.type === "image"),
+    ).toBe(true);
+    expect(viewModel.post?.publishedAtLabel).toContain("24");
+  });
+
   it("exposes the post empty state", () => {
     const viewModel = createBlogPostDetailsViewModel(
       null,

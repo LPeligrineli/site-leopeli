@@ -8,6 +8,6 @@ export interface BlogPost {
   publishedAt: Date;
   readTime: number;
   tags: string[];
-  image: string;
+  image?: string;
   featured: boolean;
 }

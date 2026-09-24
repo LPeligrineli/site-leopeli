@@ -1,5 +1,6 @@
 import type { BlogPost } from "@/domain/blog/blog-post";
 import type { Locale } from "@/shared/i18n/locale";
+import { parseBlogContent } from "../lib/blog-content";
 import type {
   BlogCopy,
   BlogPostDetailsViewModel,
@@ -33,6 +34,7 @@ export function createBlogViewModel(
       slug: post.slug,
       title: post.title[locale],
       titleInitial: post.title[locale].charAt(0),
+      image: post.image,
       excerpt: post.excerpt[locale],
       readTimeLabel: formatReadTime(post.readTime, t),
       tags: [...post.tags],
@@ -56,11 +58,14 @@ export function createBlogPostDetailsViewModel(
           title: post.title[locale],
           titleInitial: post.title[locale].charAt(0),
           excerpt: post.excerpt[locale],
-          content: post.content[locale],
+          content: parseBlogContent(post.content[locale]),
+          // Dates are stored as calendar days (YYYY-MM-DD, parsed as UTC).
+          // Formatting in UTC keeps the day stable in any viewer time zone.
           publishedAtLabel: post.publishedAt.toLocaleDateString(locale, {
             year: "numeric",
             month: "long",
             day: "numeric",
+            timeZone: "UTC",
           }),
           readTimeLabel: formatReadTime(post.readTime, t),
           tags: [...post.tags],
@@ -68,7 +73,7 @@ export function createBlogPostDetailsViewModel(
       : null,
     copy: {
       ...createBlogCopy(t),
-      notFound: "Post not found",
+      notFound: t("blog.notFound"),
     },
     isEmpty: post === null,
   };

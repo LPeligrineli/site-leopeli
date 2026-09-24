@@ -53,11 +53,23 @@ export function BlogPagePresenter({ posts, copy, isActive }: BlogViewModel) {
                       variants={itemVariants}
                       className="group flex flex-col rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-all duration-300"
                     >
-                      <div className="aspect-[3/2] bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center">
-                        <span className="text-5xl font-bold text-primary/20">
-                          {post.titleInitial}
-                        </span>
-                      </div>
+                      {post.image ? (
+                        <div className="aspect-[3/2] overflow-hidden bg-secondary">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={post.image}
+                            alt=""
+                            loading="lazy"
+                            className="h-full w-full object-cover object-[50%_30%] transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-[3/2] bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center">
+                          <span className="text-5xl font-bold text-primary/20">
+                            {post.titleInitial}
+                          </span>
+                        </div>
+                      )}
                       <div className="flex-1 p-6 flex flex-col">
                         <div className="flex flex-wrap gap-2 mb-3">
                           {post.tags.map((tag) => (

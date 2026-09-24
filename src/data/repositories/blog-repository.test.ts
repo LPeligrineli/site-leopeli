@@ -10,8 +10,8 @@ describe("blogRepository", () => {
 
   it("finds by slug and returns null when absent", async () => {
     await expect(
-      blogRepository.findBySlug("react-server-components-guide"),
-    ).resolves.toMatchObject({ slug: "react-server-components-guide" });
+      blogRepository.findBySlug("ser-ruim-em-alguma-coisa-de-novo"),
+    ).resolves.toMatchObject({ slug: "ser-ruim-em-alguma-coisa-de-novo" });
     await expect(blogRepository.findBySlug("absent")).resolves.toBeNull();
   });
 });
