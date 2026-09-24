@@ -21,7 +21,7 @@ const translations: Record<Locale, Record<string, string>> = {
     
     // Hero
     'hero.greeting': 'Olá, eu sou',
-    'hero.role': 'Senior Frontend Developer',
+    'hero.role': 'Senior Frontend Engineer',
     'hero.description': 'React e TypeScript no centro, mas o trabalho não para na tela. Mais de 8 anos participando de arquitetura, performance e decisão de produto em aplicações reais.',
     'hero.cta.cv': 'Baixar CV',
     'hero.cta.contact': 'Entrar em Contato',
@@ -108,7 +108,7 @@ const translations: Record<Locale, Record<string, string>> = {
     
     // Hero
     'hero.greeting': "Hi, I'm",
-    'hero.role': 'Senior Frontend Developer',
+    'hero.role': 'Senior Frontend Engineer',
     'hero.description': "React and TypeScript at the core, but the job doesn't stop at the screen. 8+ years making architecture, performance, and product calls on real applications.",
     'hero.cta.cv': 'Download CV',
     'hero.cta.contact': 'Get in Touch',
