@@ -33,6 +33,8 @@ export interface BlogPostDetailsViewModel {
     titleInitial: string;
     excerpt: string;
     content: BlogContentBlock[];
+    /** Cover shown above the text, unless the same image already appears in the content. */
+    cover?: { src: string; alt: string };
     publishedAtLabel: string;
     readTimeLabel: string;
     tags: string[];

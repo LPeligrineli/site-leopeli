@@ -10,5 +10,6 @@ export interface BlogPostRecord {
   tags: string[];
   /** Used on cards and as the social preview image. */
   image?: string;
+  imageAlt?: LocalizedText;
   featured: boolean;
 }

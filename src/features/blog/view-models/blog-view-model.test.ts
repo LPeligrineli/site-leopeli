@@ -33,6 +33,21 @@ describe("blog view models", () => {
     expect(viewModel.post?.publishedAtLabel).toContain("24");
   });
 
+  it("shows the cover only when the image is not already in the content", async () => {
+    const [withCover, withInlinePhoto] = await Promise.all([
+      blogRepository.findBySlug("microfrontends-eu-faria-de-novo"),
+      blogRepository.findBySlug("ser-ruim-em-alguma-coisa-de-novo"),
+    ]);
+
+    expect(
+      createBlogPostDetailsViewModel(withCover, "en-US", translate).post?.cover,
+    ).toMatchObject({ src: withCover?.image });
+    expect(
+      createBlogPostDetailsViewModel(withInlinePhoto, "en-US", translate).post
+        ?.cover,
+    ).toBeUndefined();
+  });
+
   it("exposes the post empty state", () => {
     const viewModel = createBlogPostDetailsViewModel(
       null,

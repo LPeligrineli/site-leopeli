@@ -9,5 +9,6 @@ export interface BlogPost {
   readTime: number;
   tags: string[];
   image?: string;
+  imageAlt?: LocalizedText;
   featured: boolean;
 }

@@ -43,6 +43,26 @@ describe("parseBlogContent", () => {
     ]);
   });
 
+  it("parses bullet and numbered lists with inline formatting", () => {
+    const [bullets, numbered] = parseBlogContent(
+      "- um **host**;\n- sete módulos\n  que continuam\n\n1. primeiro\n2. segundo",
+    );
+
+    expect(bullets).toEqual({
+      type: "list",
+      ordered: false,
+      items: [
+        [
+          { type: "text", value: "um " },
+          { type: "strong", value: "host" },
+          { type: "text", value: ";" },
+        ],
+        [{ type: "text", value: "sete módulos que continuam" }],
+      ],
+    });
+    expect(numbered).toMatchObject({ type: "list", ordered: true });
+  });
+
   it("normalizes windows line endings", () => {
     expect(parseBlogContent("a\r\n\r\nb")).toHaveLength(2);
   });

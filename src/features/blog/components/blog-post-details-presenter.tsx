@@ -78,6 +78,36 @@ function ContentBlock({ block }: { block: BlogContentBlock }) {
           <InlineContent content={block.content} />
         </blockquote>
       );
+    case "list": {
+      const ListTag = block.ordered ? "ol" : "ul";
+      return (
+        <ListTag
+          className={
+            block.ordered
+              ? "list-decimal space-y-3 pl-6 marker:text-primary"
+              : "space-y-3"
+          }
+        >
+          {block.items.map((item, index) =>
+            block.ordered ? (
+              <li key={index}>
+                <InlineContent content={item} />
+              </li>
+            ) : (
+              <li key={index} className="flex gap-3">
+                <span
+                  aria-hidden="true"
+                  className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                />
+                <span>
+                  <InlineContent content={item} />
+                </span>
+              </li>
+            ),
+          )}
+        </ListTag>
+      );
+    }
     case "image":
       return (
         <figure className="mx-auto max-w-md py-4">
@@ -174,6 +204,19 @@ export function BlogPostDetailsPresenter({
 
         <section className="pt-10 pb-20 md:pb-28">
           <div className="container-tight">
+            {post.cover && (
+              <figure className="max-w-3xl mx-auto mb-12">
+                {/* Covers are illustrations with a fixed 1200x630 ratio. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={post.cover.src}
+                  alt={post.cover.alt}
+                  width={1200}
+                  height={630}
+                  className="w-full h-auto rounded-xl border border-border/50"
+                />
+              </figure>
+            )}
             <article className="max-w-2xl mx-auto space-y-6 text-lg leading-relaxed text-foreground/80">
               {post.content.map((block, index) => (
                 <ContentBlock key={index} block={block} />

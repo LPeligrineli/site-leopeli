@@ -11,6 +11,7 @@ export function mapBlogPostRecordToBlogPost(record: BlogPostRecord): BlogPost {
     readTime: record.readTime,
     tags: [...record.tags],
     image: record.image,
+    imageAlt: record.imageAlt ? { ...record.imageAlt } : undefined,
     featured: record.featured,
   };
 }
